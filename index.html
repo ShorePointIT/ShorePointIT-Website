@@ -44,6 +44,7 @@
       };
     </script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0F1F3D; }
@@ -160,19 +161,6 @@
       .cta-btn { transition: all 0.3s ease; }
       .cta-btn:hover { box-shadow: 0 0 24px rgba(37,99,235,0.4); transform: translateY(-2px); }
 
-      /* Steps line */
-      .step-connector {
-        position: absolute;
-        top: 28px;
-        left: calc(33.33% + 14px);
-        width: calc(33.33% - 28px);
-        height: 3px;
-        background: #2563EB;
-      }
-      .step-connector-2 {
-        left: calc(66.66% + 14px);
-      }
-
       /* Page transitions */
       .page-section { display: none; opacity: 0; transition: opacity 0.3s ease; }
       .page-section.active { display: block; opacity: 1; }
@@ -202,13 +190,66 @@
       .success-msg { display: none; }
       .success-msg.show { display: flex; }
 
-      /* Map placeholder */
-      .map-placeholder {
-        background: #0F1F3D;
-        background-image: 
-          linear-gradient(rgba(37,99,235,0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(37,99,235,0.05) 1px, transparent 1px);
-        background-size: 40px 40px;
+      /* Credential card hover */
+      .credential-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .credential-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(37,99,235,0.15);
+      }
+
+      /* Segment card hover */
+      .segment-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        border-left: 3px solid #2563EB;
+      }
+      .segment-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(37,99,235,0.12);
+      }
+
+      /* Pull quote */
+      .pull-quote {
+        border-left: 4px solid #2563EB;
+        background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+      }
+
+      /* Formspree success/error styling */
+      [data-fs-success] {
+        display: none;
+        color: #2563EB !important;
+        font-weight: 600;
+        padding: 14px 16px;
+        margin-bottom: 12px;
+        background: rgba(37,99,235,0.08) !important;
+        border: 1px solid rgba(37,99,235,0.2);
+        border-radius: 6px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      [data-fs-error] {
+        color: #ef4444;
+        font-weight: 500;
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+      }
+      div[data-fs-error] {
+        padding: 8px;
+        margin-bottom: 8px;
+      }
+      span[data-fs-error] {
+        display: block;
+        margin-top: 4px;
+        padding: 0;
+      }
+
+      /* Submit button disabled state during submission */
+      form[data-submitting] [data-fs-submit-btn] {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
       }
     </style>
 </head>
@@ -229,7 +270,7 @@
                         <i data-id="10" data-lucide="phone" class="w-4 h-4 text-electric-400"></i>
                         (855) 574-6737
                     </a>
-                    <button data-id="11" id="top-cta-btn-7hzq" class="cta-btn bg-electric-500 hover:bg-electric-600 text-white text-sm font-semibold px-5 py-2.5 hidden sm:block">Book Free IT Audit</button>
+                    <button data-id="11" id="top-cta-btn-7hzq" class="cta-btn bg-electric-500 hover:bg-electric-600 text-white text-sm font-semibold px-5 py-2.5 hidden sm:block">Schedule a Consultation</button>
                     <!-- Mobile hamburger -->
                     <button data-id="12" id="mobile-menu-btn-4kxp" class="md:hidden p-2 text-white">
                         <i data-id="13" data-lucide="menu" class="w-6 h-6"></i>
@@ -267,7 +308,7 @@
                 <i data-id="34" data-lucide="phone" class="w-4 h-4 text-electric-400"></i>
                 (855) 574-6737
             </a>
-            <button data-id="35" id="mobile-cta-btn-2nxl" class="cta-btn bg-electric-500 text-white text-sm font-semibold px-6 py-3 w-full">Book Free IT Audit</button>
+            <button data-id="35" id="mobile-cta-btn-2nxl" class="cta-btn bg-electric-500 text-white text-sm font-semibold px-6 py-3 w-full">Schedule a Consultation</button>
         </div>
     </nav>
 
@@ -282,246 +323,262 @@
                 <div data-id="39" class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12">
                     <div data-id="40" class="md:w-[60%]">
                         <h1 data-id="41" id="hero-h1-4mxq" class="text-3xl md:text-5xl lg:text-[3.5rem] font-black text-white leading-tight tracking-tight">
-                            Enterprise IT.<br data-id="42">Built for Your Business.
+                            Enterprise IT Expertise.<br data-id="42">Practical Business Outcomes.
                         </h1>
-                        <p data-id="43" class="text-xl md:text-2xl font-bold text-electric-500 mt-3">Cloud-Ready. AI-Enabled. Fully Secure.</p>
-                        <p data-id="44" class="text-slate-400 text-base md:text-lg mt-5 max-w-xl leading-relaxed">ShorePointIT delivers cloud infrastructure, cybersecurity, and AI solutions to growing businesses — without the enterprise price tag.</p>
-                        <div data-id="45" class="flex flex-wrap gap-4 mt-8">
-                            <button data-id="46" id="hero-cta-1-9xpq" class="cta-btn bg-electric-500 hover:bg-electric-600 text-white font-semibold px-7 py-3.5 text-sm">Get a Free IT Audit</button>
-                            <button data-id="47" id="hero-cta-2-3mmq" class="outline-btn border-2 border-white text-white font-semibold px-7 py-3.5 text-sm">View Our Services</button>
+                        <p data-id="43" class="text-lg md:text-xl font-medium text-slate-400 mt-5 max-w-xl leading-relaxed">Former Microsoft technology leader bringing 20+ years of enterprise-grade expertise to organizations ready to modernize, secure, and scale.</p>
+                        <div data-id="44" class="flex flex-wrap gap-4 mt-8">
+                            <button data-id="45" id="hero-cta-1-9xpq" class="cta-btn bg-electric-500 hover:bg-electric-600 text-white font-semibold px-7 py-3.5 text-sm">Schedule a Consultation</button>
+                            <button data-id="46" id="hero-cta-2-3mmq" class="outline-btn border-2 border-white text-white font-semibold px-7 py-3.5 text-sm">View Our Services</button>
                         </div>
                     </div>
-                    <div data-id="48" class="md:w-[40%] w-full">
-                        <div data-id="49" class="circuit-container">
-                            <div data-id="50" class="node node-1"></div>
-                            <div data-id="51" class="node node-2"></div>
-                            <div data-id="52" class="node node-3"></div>
-                            <div data-id="53" class="node node-4"></div>
-                            <div data-id="54" class="node node-5"></div>
-                            <div data-id="55" class="circuit-line line-1"></div>
-                            <div data-id="56" class="circuit-line line-2"></div>
-                            <div data-id="57" class="circuit-line line-3"></div>
-                            <div data-id="58" class="circuit-line line-4"></div>
-                            <div data-id="59" class="circuit-line line-5"></div>
+                    <div data-id="47" class="md:w-[40%] w-full">
+                        <div data-id="48" class="circuit-container">
+                            <div data-id="49" class="node node-1"></div>
+                            <div data-id="50" class="node node-2"></div>
+                            <div data-id="51" class="node node-3"></div>
+                            <div data-id="52" class="node node-4"></div>
+                            <div data-id="53" class="node node-5"></div>
+                            <div data-id="54" class="circuit-line line-1"></div>
+                            <div data-id="55" class="circuit-line line-2"></div>
+                            <div data-id="56" class="circuit-line line-3"></div>
+                            <div data-id="57" class="circuit-line line-4"></div>
+                            <div data-id="58" class="circuit-line line-5"></div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- TRUST BAR -->
-            <section data-id="60" id="trust-bar-5xmq" class="bg-lgray-100 py-10 md:py-14">
-                <div data-id="61" class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-                    <div data-id="62" class="flex flex-col items-center text-center gap-2">
-                        <i data-id="63" data-lucide="shield-check" class="w-8 h-8 text-electric-500"></i>
-                        <span data-id="64" class="text-2xl md:text-3xl font-black text-navy-800">24/7</span>
-                        <span data-id="65" class="text-sm text-slate-500 font-medium">Continuous Monitoring</span>
+            <section data-id="59" id="trust-bar-5xmq" class="bg-lgray-100 py-10 md:py-14">
+                <div data-id="60" class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                    <div data-id="61" class="flex flex-col items-center text-center gap-2">
+                        <i data-id="62" data-lucide="award" class="w-8 h-8 text-electric-500"></i>
+                        <span data-id="63" class="text-2xl md:text-3xl font-black text-navy-800">20+</span>
+                        <span data-id="64" class="text-sm text-slate-500 font-medium">Years Enterprise IT Experience</span>
                     </div>
-                    <div data-id="66" class="flex flex-col items-center text-center gap-2">
-                        <i data-id="67" data-lucide="clock" class="w-8 h-8 text-electric-500"></i>
-                        <span data-id="68" class="text-2xl md:text-3xl font-black text-navy-800">&lt;15 Min</span>
-                        <span data-id="69" class="text-sm text-slate-500 font-medium">Average Response Time</span>
+                    <div data-id="65" class="flex flex-col items-center text-center gap-2">
+                        <i data-id="66" data-lucide="building-2" class="w-8 h-8 text-electric-500"></i>
+                        <span data-id="67" class="text-2xl md:text-3xl font-black text-navy-800">18 Years</span>
+                        <span data-id="68" class="text-sm text-slate-500 font-medium">At Microsoft</span>
                     </div>
-                    <div data-id="70" class="flex flex-col items-center text-center gap-2">
-                        <i data-id="71" data-lucide="map-pin" class="w-8 h-8 text-electric-500"></i>
-                        <span data-id="72" class="text-2xl md:text-3xl font-black text-navy-800">US-Based</span>
-                        <span data-id="73" class="text-sm text-slate-500 font-medium">Serving Clients Nationwide</span>
-                    </div>
-                    <div data-id="74" class="flex flex-col items-center text-center gap-2">
-                        <i data-id="75" data-lucide="check-circle" class="w-8 h-8 text-electric-500"></i>
-                        <span data-id="76" class="text-2xl md:text-3xl font-black text-navy-800">No Lock-In</span>
-                        <span data-id="77" class="text-sm text-slate-500 font-medium">Flexible Month-to-Month</span>
+                    <div data-id="69" class="flex flex-col items-center text-center gap-2">
+                        <i data-id="70" data-lucide="target" class="w-8 h-8 text-electric-500"></i>
+                        <span data-id="71" class="text-2xl md:text-3xl font-black text-navy-800">Outcomes</span>
+                        <span data-id="72" class="text-sm text-slate-500 font-medium">Focused Delivery</span>
                     </div>
                 </div>
             </section>
 
             <!-- ABOUT SNAPSHOT -->
-            <section data-id="78" id="about-snap-7xjq" class="bg-white py-16 md:py-20">
-                <div data-id="79" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-start gap-12">
-                    <div data-id="80" class="md:w-1/2">
-                        <h2 data-id="81" class="text-2xl md:text-3xl font-black text-navy-800 leading-tight">Your Full-Time IT Department — Without the Full-Time Cost.</h2>
-                        <p data-id="82" class="text-slate-500 text-base leading-relaxed mt-5">ShorePointIT is a New Jersey managed services provider delivering enterprise-grade cloud, cybersecurity, and AI solutions to growing businesses. We become your technology partner — proactive, responsive, and fully invested in your success.</p>
-                        <a data-id="83" href="#" id="learn-about-link-4xmq" class="inline-flex items-center gap-1 text-electric-500 font-semibold text-sm mt-5 hover:text-electric-600">Learn About Us <i data-id="84" data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <section data-id="73" id="about-snap-7xjq" class="bg-white py-16 md:py-20">
+                <div data-id="74" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-start gap-12">
+                    <div data-id="75" class="md:w-1/2">
+                        <h2 data-id="76" class="text-2xl md:text-3xl font-black text-navy-800 leading-tight">Fortune 500 Expertise. Boutique Firm Agility.</h2>
+                        <p data-id="77" class="text-slate-500 text-base leading-relaxed mt-5">ShorePointIT is a boutique technology consulting firm delivering enterprise-grade IT strategy, cloud transformation, and cybersecurity services. We combine the rigor of Fortune 500 experience with the agility and attention of a dedicated partner.</p>
+                        <a data-id="78" href="#" id="learn-about-link-4xmq" class="inline-flex items-center gap-1 text-electric-500 font-semibold text-sm mt-5 hover:text-electric-600">Learn About Us <i data-id="79" data-lucide="arrow-right" class="w-4 h-4"></i></a>
                     </div>
-                    <div data-id="85" class="md:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-                        <div data-id="86" class="bg-navy-800 text-white p-6 text-center">
-                            <p data-id="87" class="text-2xl font-black">100%</p>
-                            <p data-id="88" class="text-sm text-slate-400 mt-1">Proactive Support</p>
+                    <div data-id="80" class="md:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                        <div data-id="81" class="bg-navy-800 text-white p-6 text-center">
+                            <p data-id="82" class="text-2xl font-black">Strategy</p>
+                            <p data-id="83" class="text-sm text-slate-400 mt-1">First Approach</p>
                         </div>
-                        <div data-id="89" class="bg-navy-800 text-white p-6 text-center">
-                            <p data-id="90" class="text-2xl font-black">Zero</p>
-                            <p data-id="91" class="text-sm text-slate-400 mt-1">Tolerance for Downtime</p>
+                        <div data-id="84" class="bg-navy-800 text-white p-6 text-center">
+                            <p data-id="85" class="text-2xl font-black">Secure</p>
+                            <p data-id="86" class="text-sm text-slate-400 mt-1">By Design</p>
                         </div>
-                        <div data-id="92" class="bg-navy-800 text-white p-6 text-center">
-                            <p data-id="93" class="text-2xl font-black">AI</p>
-                            <p data-id="94" class="text-sm text-slate-400 mt-1">Powered Security</p>
+                        <div data-id="87" class="bg-navy-800 text-white p-6 text-center">
+                            <p data-id="88" class="text-2xl font-black">Scale</p>
+                            <p data-id="89" class="text-sm text-slate-400 mt-1">With Confidence</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- SERVICES GRID -->
-            <section data-id="95" id="services-grid-9xpq" class="bg-white py-16 md:py-20">
-                <div data-id="96" class="max-w-7xl mx-auto px-4 md:px-6">
-                    <h2 data-id="97" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">What We Do</h2>
-                    <div data-id="98" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="home-services-grid-2xnq">
-                        <!-- Cards rendered via data to keep markup DRY -->
+            <section data-id="90" id="services-grid-9xpq" class="bg-white py-16 md:py-20">
+                <div data-id="91" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 data-id="92" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-4">What We Do</h2>
+                    <p data-id="93" class="text-slate-500 text-base text-center max-w-2xl mx-auto mb-12">Enterprise-grade technology solutions — right-sized for your organization.</p>
+                    <div data-id="94" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="home-services-grid-2xnq">
+                        <!-- Cards rendered via data -->
                     </div>
-                    <div data-id="99" class="text-center mt-10">
-                        <button data-id="100" id="view-all-services-btn-5xmq" class="cta-btn bg-electric-500 hover:bg-electric-600 text-white font-semibold px-7 py-3 text-sm">View All Services</button>
+                    <div data-id="95" class="text-center mt-10">
+                        <button data-id="96" id="view-all-services-btn-5xmq" class="cta-btn bg-electric-500 hover:bg-electric-600 text-white font-semibold px-7 py-3 text-sm">View All Services</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHO WE SERVE -->
+            <section data-id="97" id="who-we-serve-section" class="bg-lgray-100 py-16 md:py-20">
+                <div data-id="98" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 data-id="99" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-4">Who We Serve</h2>
+                    <p data-id="100" class="text-slate-500 text-base text-center max-w-2xl mx-auto mb-12">ShorePointIT partners with organizations across industries seeking enterprise-caliber technology leadership.</p>
+                    <div data-id="101" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="segments-grid">
+                        <!-- Rendered by JS -->
                     </div>
                 </div>
             </section>
 
             <!-- HOW IT WORKS -->
-            <section data-id="101" id="how-it-works-3kql" class="bg-lgray-100 py-16 md:py-20">
-                <div data-id="102" class="max-w-7xl mx-auto px-4 md:px-6">
-                    <h2 data-id="103" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-14">How It Works</h2>
-                    <div data-id="104" class="relative flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-0">
+            <section data-id="102" id="how-it-works-3kql" class="bg-white py-16 md:py-20">
+                <div data-id="103" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 data-id="104" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-14">How It Works</h2>
+                    <div data-id="105" class="relative flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-0">
                         <!-- Connector lines (desktop only) -->
-                        <div data-id="105" class="hidden md:block absolute top-7 left-[calc(16.66%+30px)] w-[calc(33.33%-60px)] h-[3px] bg-electric-500"></div>
-                        <div data-id="106" class="hidden md:block absolute top-7 left-[calc(50%+30px)] w-[calc(33.33%-60px)] h-[3px] bg-electric-500"></div>
+                        <div data-id="106" class="hidden md:block absolute top-7 left-[calc(16.66%+30px)] w-[calc(33.33%-60px)] h-[3px] bg-electric-500"></div>
+                        <div data-id="107" class="hidden md:block absolute top-7 left-[calc(50%+30px)] w-[calc(33.33%-60px)] h-[3px] bg-electric-500"></div>
                         
-                        <div data-id="107" class="flex-1 flex flex-col items-center text-center px-4">
-                            <div data-id="108" class="w-14 h-14 bg-electric-500 text-white flex items-center justify-center font-black text-xl mb-4">1</div>
-                            <h3 data-id="109" class="text-lg font-bold text-navy-800 mb-2">Book a Free IT Audit</h3>
-                            <p data-id="110" class="text-slate-500 text-sm leading-relaxed">We assess your current tech stack, gaps, and risks at no cost and no obligation.</p>
+                        <div data-id="108" class="flex-1 flex flex-col items-center text-center px-4">
+                            <div data-id="109" class="w-14 h-14 bg-electric-500 text-white flex items-center justify-center font-black text-xl mb-4">1</div>
+                            <h3 data-id="110" class="text-lg font-bold text-navy-800 mb-2">Schedule a Consultation</h3>
+                            <p data-id="111" class="text-slate-500 text-sm leading-relaxed">We assess your current technology landscape, identify gaps, and uncover opportunities at no cost.</p>
                         </div>
-                        <div data-id="111" class="flex-1 flex flex-col items-center text-center px-4">
-                            <div data-id="112" class="w-14 h-14 bg-electric-500 text-white flex items-center justify-center font-black text-xl mb-4">2</div>
-                            <h3 data-id="113" class="text-lg font-bold text-navy-800 mb-2">Get Your Custom IT Roadmap</h3>
-                            <p data-id="114" class="text-slate-500 text-sm leading-relaxed">We design a secure, scalable plan built around your business goals and budget.</p>
+                        <div data-id="112" class="flex-1 flex flex-col items-center text-center px-4">
+                            <div data-id="113" class="w-14 h-14 bg-electric-500 text-white flex items-center justify-center font-black text-xl mb-4">2</div>
+                            <h3 data-id="114" class="text-lg font-bold text-navy-800 mb-2">Get Your IT Strategy & Roadmap</h3>
+                            <p data-id="115" class="text-slate-500 text-sm leading-relaxed">We design a secure, scalable plan aligned with your business goals, budget, and growth trajectory.</p>
                         </div>
-                        <div data-id="115" class="flex-1 flex flex-col items-center text-center px-4">
-                            <div data-id="116" class="w-14 h-14 bg-electric-500 text-white flex items-center justify-center font-black text-xl mb-4">3</div>
-                            <h3 data-id="117" class="text-lg font-bold text-navy-800 mb-2">We Handle IT. You Grow.</h3>
-                            <p data-id="118" class="text-slate-500 text-sm leading-relaxed">ShorePointIT manages your entire tech stack so you can focus on running your business.</p>
+                        <div data-id="116" class="flex-1 flex flex-col items-center text-center px-4">
+                            <div data-id="117" class="w-14 h-14 bg-electric-500 text-white flex items-center justify-center font-black text-xl mb-4">3</div>
+                            <h3 data-id="118" class="text-lg font-bold text-navy-800 mb-2">We Execute. You Grow.</h3>
+                            <p data-id="119" class="text-slate-500 text-sm leading-relaxed">ShorePointIT delivers on the strategy — managing, securing, and optimizing your technology so you can focus on your mission.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- WHY SHOREPOINTIT -->
-            <section data-id="119" id="why-us-8xjq" class="bg-navy-800 py-16 md:py-20">
-                <div data-id="120" class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <div data-id="121" class="flex flex-col items-center text-center md:items-start md:text-left">
-                        <i data-id="122" data-lucide="cloud" class="w-10 h-10 text-electric-500 mb-4"></i>
-                        <h3 data-id="123" class="text-xl font-bold text-white mb-2">Cloud-Ready</h3>
-                        <p data-id="124" class="text-slate-400 text-sm leading-relaxed">AWS, Azure, and Microsoft 365 infrastructure configured, managed, and optimized for your team.</p>
+            <section data-id="120" id="why-us-8xjq" class="bg-navy-800 py-16 md:py-20">
+                <div data-id="121" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 data-id="122" class="text-2xl md:text-3xl font-black text-white text-center mb-4">Why ShorePointIT?</h2>
+                    <p data-id="123" class="text-slate-400 text-base text-center max-w-2xl mx-auto mb-12">We bring Fortune 500 expertise to organizations of every size.</p>
+                    <div data-id="124" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div data-id="125" class="credential-card bg-navy-700 p-6 text-center flex flex-col items-center">
+                            <i data-id="126" data-lucide="calendar-check" class="w-10 h-10 text-electric-400 mb-3"></i>
+                            <p data-id="127" class="text-2xl font-black text-white mb-1">20+ Years</p>
+                            <p data-id="128" class="text-slate-400 text-sm">Enterprise IT leadership experience</p>
+                        </div>
+                        <div data-id="129" class="credential-card bg-navy-700 p-6 text-center flex flex-col items-center">
+                            <i data-id="130" data-lucide="building-2" class="w-10 h-10 text-electric-400 mb-3"></i>
+                            <p data-id="131" class="text-2xl font-black text-white mb-1">18 Years</p>
+                            <p data-id="132" class="text-slate-400 text-sm">At Microsoft leading technology initiatives</p>
+                        </div>
+                        <div data-id="133" class="credential-card bg-navy-700 p-6 text-center flex flex-col items-center">
+                            <i data-id="134" data-lucide="layers" class="w-10 h-10 text-electric-400 mb-3"></i>
+                            <p data-id="135" class="text-2xl font-black text-white mb-1">Multi-Industry</p>
+                            <p data-id="136" class="text-slate-400 text-sm">Healthcare, finance, government, retail &amp; more</p>
+                        </div>
+                        <div data-id="137" class="credential-card bg-navy-700 p-6 text-center flex flex-col items-center">
+                            <i data-id="138" data-lucide="target" class="w-10 h-10 text-electric-400 mb-3"></i>
+                            <p data-id="139" class="text-2xl font-black text-white mb-1">Outcomes-Focused</p>
+                            <p data-id="140" class="text-slate-400 text-sm">Measured by your results, not just deliverables</p>
+                        </div>
                     </div>
-                    <div data-id="125" class="flex flex-col items-center text-center md:items-start md:text-left">
-                        <i data-id="126" data-lucide="cpu" class="w-10 h-10 text-electric-500 mb-4"></i>
-                        <h3 data-id="127" class="text-xl font-bold text-white mb-2">AI-Enabled</h3>
-                        <p data-id="128" class="text-slate-400 text-sm leading-relaxed">We help you operationalize AI tools, automate workflows, and build a smarter, more efficient operation.</p>
-                    </div>
-                    <div data-id="129" class="flex flex-col items-center text-center md:items-start md:text-left">
-                        <i data-id="130" data-lucide="shield" class="w-10 h-10 text-electric-500 mb-4"></i>
-                        <h3 data-id="131" class="text-xl font-bold text-white mb-2">Fully Secure</h3>
-                        <p data-id="132" class="text-slate-400 text-sm leading-relaxed">Enterprise-grade security frameworks, Zero Trust policies, and always-on threat detection — right-sized for your budget.</p>
+                    <!-- Pull Quote -->
+                    <div data-id="141" class="mt-12 max-w-3xl mx-auto bg-navy-700 border-l-4 border-electric-500 p-6 md:p-8">
+                        <p data-id="142" class="text-white text-base md:text-lg italic leading-relaxed">"Led enterprise technology programs for Microsoft and government organizations. ShorePointIT brings that experience to help organizations modernize, secure, and optimize their technology investments."</p>
+                        <p data-id="143" class="text-electric-400 text-sm font-semibold mt-4">— Luis Hernandez, Founder &amp; Technology Services Leader</p>
                     </div>
                 </div>
             </section>
 
             <!-- TESTIMONIALS -->
-            <section data-id="133" id="testimonials-4xmq" class="bg-white py-16 md:py-20">
-                <div data-id="134" class="max-w-7xl mx-auto px-4 md:px-6">
-                    <h2 data-id="135" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">What Our Clients Say</h2>
-                    <div data-id="136" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div data-id="137" class="bg-lgray-50 p-6 md:p-8 border border-lgray-200">
-                            <div data-id="138" class="flex gap-1 mb-4 star-gold">★★★★★</div>
-                            <p data-id="139" class="text-slate-600 text-sm italic leading-relaxed mb-6">"ShorePointIT completely transformed how we manage our technology. They handled everything from cloud migration to security — and we never missed a beat."</p>
-                            <p data-id="140" class="font-bold text-navy-800 text-sm">James R.</p>
-                            <p data-id="141" class="text-slate-500 text-xs">Operations Director</p>
+            <section data-id="144" id="testimonials-4xmq" class="bg-white py-16 md:py-20">
+                <div data-id="145" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 data-id="146" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">What Our Clients Say</h2>
+                    <div data-id="147" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div data-id="148" class="bg-lgray-50 p-6 md:p-8 border border-lgray-200">
+                            <div data-id="149" class="flex gap-1 mb-4 star-gold">★★★★★</div>
+                            <p data-id="150" class="text-slate-600 text-sm italic leading-relaxed mb-6">"ShorePointIT completely transformed how we manage our technology. They handled everything from cloud migration to security — and we never missed a beat."</p>
+                            <p data-id="151" class="font-bold text-navy-800 text-sm">James R.</p>
+                            <p data-id="152" class="text-slate-500 text-xs">Operations Director</p>
                         </div>
-                        <div data-id="142" class="bg-lgray-50 p-6 md:p-8 border border-lgray-200">
-                            <div data-id="143" class="flex gap-1 mb-4 star-gold">★★★★★</div>
-                            <p data-id="144" class="text-slate-600 text-sm italic leading-relaxed mb-6">"Having the ShorePointIT team as our IT partner feels like having an enterprise IT department at a fraction of the cost. Responsive and knowledgeable."</p>
-                            <p data-id="145" class="font-bold text-navy-800 text-sm">Amanda K.</p>
-                            <p data-id="146" class="text-slate-500 text-xs">CEO</p>
+                        <div data-id="153" class="bg-lgray-50 p-6 md:p-8 border border-lgray-200">
+                            <div data-id="154" class="flex gap-1 mb-4 star-gold">★★★★★</div>
+                            <p data-id="155" class="text-slate-600 text-sm italic leading-relaxed mb-6">"Having the ShorePointIT team as our technology partner feels like having an enterprise IT department at a fraction of the cost. Strategic, responsive, and knowledgeable."</p>
+                            <p data-id="156" class="font-bold text-navy-800 text-sm">Amanda K.</p>
+                            <p data-id="157" class="text-slate-500 text-xs">CEO</p>
                         </div>
-                        <div data-id="147" class="bg-lgray-50 p-6 md:p-8 border border-lgray-200">
-                            <div data-id="148" class="flex gap-1 mb-4 star-gold">★★★★★</div>
-                            <p data-id="149" class="text-slate-600 text-sm italic leading-relaxed mb-6">"We had a ransomware scare and ShorePointIT had us back up and running in hours. Their proactive monitoring has kept us safe ever since."</p>
-                            <p data-id="150" class="font-bold text-navy-800 text-sm">Michael T.</p>
-                            <p data-id="151" class="text-slate-500 text-xs">Business Owner</p>
+                        <div data-id="158" class="bg-lgray-50 p-6 md:p-8 border border-lgray-200">
+                            <div data-id="159" class="flex gap-1 mb-4 star-gold">★★★★★</div>
+                            <p data-id="160" class="text-slate-600 text-sm italic leading-relaxed mb-6">"We had a ransomware scare and ShorePointIT had us back up and running in hours. Their proactive monitoring has kept us safe ever since."</p>
+                            <p data-id="161" class="font-bold text-navy-800 text-sm">Michael T.</p>
+                            <p data-id="162" class="text-slate-500 text-xs">Business Owner</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- FAQ ACCORDION -->
-            <section data-id="152" id="faq-section-6xpq" class="bg-lgray-100 py-16 md:py-20">
-                <div data-id="153" class="max-w-3xl mx-auto px-4 md:px-6">
-                    <h2 data-id="154" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">Frequently Asked Questions</h2>
-                    <div data-id="155" id="faq-list-3xjq" class="flex flex-col gap-3">
+            <section data-id="163" id="faq-section-6xpq" class="bg-lgray-100 py-16 md:py-20">
+                <div data-id="164" class="max-w-3xl mx-auto px-4 md:px-6">
+                    <h2 data-id="165" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">Frequently Asked Questions</h2>
+                    <div data-id="166" id="faq-list-3xjq" class="flex flex-col gap-3">
                         <!-- FAQ items rendered by JS -->
                     </div>
                 </div>
             </section>
 
             <!-- PARTNER LOGOS -->
-            <section data-id="156" id="partners-7xmq" class="bg-white py-14">
-                <div data-id="157" class="max-w-7xl mx-auto px-4 md:px-6">
-                    <p data-id="158" class="text-center text-slate-500 text-sm font-medium mb-8 uppercase tracking-wider">Trusted Technology Partners</p>
-                    <div data-id="159" class="flex items-center justify-center">
-                        <div data-id="160" class="bg-lgray-100 px-12 py-6 flex items-center justify-center">
-                            <span data-id="161" class="text-slate-500 font-medium text-sm italic">Technology Partners — Coming Soon</span>
+            <section data-id="167" id="partners-7xmq" class="bg-white py-14">
+                <div data-id="168" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <p data-id="169" class="text-center text-slate-500 text-sm font-medium mb-8 uppercase tracking-wider">Trusted Technology Partners</p>
+                    <div data-id="170" class="flex items-center justify-center">
+                        <div data-id="171" class="bg-lgray-100 px-12 py-6 flex items-center justify-center">
+                            <span data-id="172" class="text-slate-500 font-medium text-sm italic">Technology Partners — Coming Soon</span>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- CTA BANNER -->
-            <section data-id="162" id="cta-banner-home-2xnq" class="bg-electric-500 py-14 md:py-16">
-                <div data-id="163" class="max-w-3xl mx-auto px-4 md:px-6 text-center">
-                    <h2 data-id="164" class="text-2xl md:text-3xl font-black text-white mb-3">Ready to Secure and Scale Your Business?</h2>
-                    <p data-id="165" class="text-white/80 text-base mb-8">Get a free consultation today — no commitment required.</p>
-                    <button data-id="166" id="cta-banner-btn-home-5xmq" class="bg-white text-navy-800 font-bold px-8 py-3.5 text-sm hover:bg-lgray-100 transition-colors">Book Your Free IT Audit</button>
+            <section data-id="173" id="cta-banner-home-2xnq" class="bg-electric-500 py-14 md:py-16">
+                <div data-id="174" class="max-w-3xl mx-auto px-4 md:px-6 text-center">
+                    <h2 data-id="175" class="text-2xl md:text-3xl font-black text-white mb-3">Ready to Modernize, Secure, and Scale?</h2>
+                    <p data-id="176" class="text-white/80 text-base mb-8">Get a free consultation today — no commitment required.</p>
+                    <button data-id="177" id="cta-banner-btn-home-5xmq" class="bg-white text-navy-800 font-bold px-8 py-3.5 text-sm hover:bg-lgray-100 transition-colors">Schedule a Consultation</button>
                 </div>
             </section>
 
             <!-- CONTACT FORM (Home) -->
-            <section data-id="167" id="contact-home-8xjq" class="bg-white py-16 md:py-20">
-                <div data-id="168" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row gap-12">
-                    <div data-id="169" class="md:w-1/2">
-                        <h2 data-id="170" class="text-2xl md:text-3xl font-black text-navy-800 mb-6">Get in Touch</h2>
-                        <div data-id="171" class="flex flex-col gap-4">
-                            <div data-id="172" class="flex items-start gap-3">
-                                <i data-id="173" data-lucide="phone" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                <div data-id="174">
-                                    <p data-id="175" class="font-semibold text-navy-800 text-sm">855-5-SHOREPOINT</p>
-                                    <p data-id="176" class="text-slate-500 text-sm">(855) 574-6737</p>
+            <section data-id="178" id="contact-home-8xjq" class="bg-white py-16 md:py-20">
+                <div data-id="179" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row gap-12">
+                    <div data-id="180" class="md:w-1/2">
+                        <h2 data-id="181" class="text-2xl md:text-3xl font-black text-navy-800 mb-6">Get in Touch</h2>
+                        <div data-id="182" class="flex flex-col gap-4">
+                            <div data-id="183" class="flex items-start gap-3">
+                                <i data-id="184" data-lucide="phone" class="w-5 h-5 text-electric-500 mt-0.5"></i>
+                                <div data-id="185">
+                                    <p data-id="186" class="font-semibold text-navy-800 text-sm">855-5-SHOREPOINT</p>
+                                    <p data-id="187" class="text-slate-500 text-sm">(855) 574-6737</p>
                                 </div>
                             </div>
-                            <div data-id="177" class="flex items-start gap-3">
-                                <i data-id="178" data-lucide="mail" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                <p data-id="179" class="text-slate-600 text-sm">info@shorepointit.com</p>
+                            <div data-id="188" class="flex items-start gap-3">
+                                <i data-id="189" data-lucide="mail" class="w-5 h-5 text-electric-500 mt-0.5"></i>
+                                <p data-id="190" class="text-slate-600 text-sm">info@shorepointit.com</p>
                             </div>
-                            <div data-id="180" class="flex items-start gap-3">
-                                <i data-id="181" data-lucide="map-pin" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                <p data-id="182" class="text-slate-600 text-sm">130 W Water St, Unit 131, Toms River, NJ 08753</p>
-                            </div>
-                            <div data-id="183" class="flex items-start gap-3">
-                                <i data-id="184" data-lucide="clock" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                <p data-id="185" class="text-slate-600 text-sm">Monday–Friday, 9:00 AM – 6:00 PM ET</p>
+                            <div data-id="191" class="flex items-start gap-3">
+                                <i data-id="192" data-lucide="clock" class="w-5 h-5 text-electric-500 mt-0.5"></i>
+                                <p data-id="193" class="text-slate-600 text-sm">Monday–Friday, 9:00 AM – 6:00 PM ET</p>
                             </div>
                         </div>
                     </div>
-                    <div data-id="186" class="md:w-1/2">
-                        <form data-id="187" id="contact-form-home-3xjq" class="flex flex-col gap-4">
-                            <div data-id="188" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <input data-id="189" type="text" placeholder="First Name" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
-                                <input data-id="190" type="text" placeholder="Last Name" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
+                    <div data-id="194" class="md:w-1/2">
+                        <div data-id="195" data-fs-success style="display:none; color:#2563EB; font-weight:600; padding:14px 16px; margin-bottom:12px; background:rgba(37,99,235,0.08); border:1px solid rgba(37,99,235,0.2); border-radius:6px;">✅ Thank you! Your message has been sent. We'll be in touch within 1 hour.</div>
+                        <div data-id="196" data-fs-error style="color:#ef4444; font-weight:500; padding:8px; margin-bottom:8px;"></div>
+                        <form data-id="197" id="contact-form-1" class="flex flex-col gap-4">
+                            <div data-id="198" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input data-id="199" type="text" placeholder="First Name" data-fs-field="firstName" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
+                                <input data-id="200" type="text" placeholder="Last Name" data-fs-field="lastName" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
                             </div>
-                            <input data-id="191" type="text" placeholder="Company Name" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
-                            <input data-id="192" type="email" placeholder="Email" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
-                            <input data-id="193" type="tel" placeholder="Phone" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
-                            <textarea data-id="194" placeholder="Message" rows="4" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500 resize-none"></textarea>
-                            <button data-id="195" type="submit" class="bg-navy-800 hover:bg-navy-900 text-white font-semibold px-7 py-3 text-sm transition-colors self-start">Send Message</button>
+                            <input data-id="201" type="text" placeholder="Organization Name" data-fs-field="organization" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
+                            <input data-id="202" type="email" placeholder="Email" data-fs-field="email" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
+                            <span data-id="203" data-fs-error="email" class="text-xs" style="color:#ef4444;"></span>
+                            <input data-id="204" type="tel" placeholder="Phone" data-fs-field="phone" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
+                            <textarea data-id="205" placeholder="Tell us about your technology challenges" rows="4" data-fs-field="message" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500 resize-none"></textarea>
+                            <span data-id="206" data-fs-error="message" class="text-xs" style="color:#ef4444;"></span>
+                            <button data-id="207" type="submit" data-fs-submit-btn class="bg-navy-800 hover:bg-navy-900 text-white font-semibold px-7 py-3 text-sm transition-colors self-start">Send Message</button>
                         </form>
-                        <div data-id="196" id="success-msg-home-4xmq" class="success-msg items-center gap-2 mt-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 text-sm">
-                            <i data-id="197" data-lucide="check-circle" class="w-5 h-5"></i>
-                            Thank you! We'll be in touch within one business day.
-                        </div>
                     </div>
                 </div>
             </section>
@@ -530,30 +587,41 @@
         <!-- ================================================================ -->
         <!-- PAGE: SERVICES -->
         <!-- ================================================================ -->
-        <div data-id="198" id="page-services" class="page-section">
+        <div data-id="208" id="page-services" class="page-section">
             <!-- Services Hero -->
-            <section data-id="199" class="bg-navy-800 hero-grid relative py-16 md:py-20">
-                <div data-id="200" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center">
-                    <h1 data-id="201" class="text-3xl md:text-5xl font-black text-white mb-4">Our Services</h1>
-                    <p data-id="202" class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">Enterprise-grade technology solutions — right-sized for your business.</p>
+            <section data-id="209" class="bg-navy-800 hero-grid relative py-16 md:py-20">
+                <div data-id="210" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center">
+                    <h1 data-id="211" class="text-3xl md:text-5xl font-black text-white mb-4">Our Services</h1>
+                    <p data-id="212" class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">Enterprise-grade technology solutions — right-sized for your organization.</p>
                 </div>
             </section>
 
             <!-- Expanded Services Grid -->
-            <section data-id="203" class="bg-white py-16 md:py-20">
-                <div data-id="204" class="max-w-7xl mx-auto px-4 md:px-6">
-                    <div data-id="205" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="services-page-grid-7xnq">
+            <section data-id="213" class="bg-white py-16 md:py-20">
+                <div data-id="214" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <div data-id="215" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="services-page-grid-7xnq">
                         <!-- Rendered by JS with expanded descriptions -->
                     </div>
                 </div>
             </section>
 
+            <!-- Who We Serve on Services Page -->
+            <section data-id="216" class="bg-lgray-100 py-16 md:py-20">
+                <div data-id="217" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 data-id="218" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-4">Who We Serve</h2>
+                    <p data-id="219" class="text-slate-500 text-base text-center max-w-2xl mx-auto mb-12">ShorePointIT partners with organizations across industries seeking enterprise-caliber technology leadership.</p>
+                    <div data-id="220" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="segments-grid-services">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </section>
+
             <!-- CTA -->
-            <section data-id="206" class="bg-electric-500 py-14 md:py-16">
-                <div data-id="207" class="max-w-3xl mx-auto px-4 md:px-6 text-center">
-                    <h2 data-id="208" class="text-2xl md:text-3xl font-black text-white mb-3">Let's Build Your IT Strategy</h2>
-                    <p data-id="209" class="text-white/80 text-base mb-8">Schedule a free IT audit and discover how ShorePointIT can transform your technology.</p>
-                    <button data-id="210" id="cta-services-btn-8xmq" class="bg-white text-navy-800 font-bold px-8 py-3.5 text-sm hover:bg-lgray-100 transition-colors">Book Your Free IT Audit</button>
+            <section data-id="221" class="bg-electric-500 py-14 md:py-16">
+                <div data-id="222" class="max-w-3xl mx-auto px-4 md:px-6 text-center">
+                    <h2 data-id="223" class="text-2xl md:text-3xl font-black text-white mb-3">Let's Build Your IT Strategy</h2>
+                    <p data-id="224" class="text-white/80 text-base mb-8">Schedule a consultation and discover how ShorePointIT can transform your technology.</p>
+                    <button data-id="225" id="cta-services-btn-8xmq" class="bg-white text-navy-800 font-bold px-8 py-3.5 text-sm hover:bg-lgray-100 transition-colors">Schedule a Consultation</button>
                 </div>
             </section>
         </div>
@@ -561,39 +629,39 @@
         <!-- ================================================================ -->
         <!-- PAGE: ABOUT -->
         <!-- ================================================================ -->
-        <div data-id="211" id="page-about" class="page-section">
+        <div data-id="226" id="page-about" class="page-section">
             <!-- About Hero -->
-            <section data-id="212" class="bg-navy-800 hero-grid relative py-16 md:py-20">
-                <div data-id="213" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center">
-                    <h1 data-id="214" class="text-3xl md:text-5xl font-black text-white mb-4">About ShorePointIT</h1>
-                    <p data-id="215" class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">A New Jersey technology partner built for the way modern businesses grow.</p>
+            <section data-id="227" class="bg-navy-800 hero-grid relative py-16 md:py-20">
+                <div data-id="228" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center">
+                    <h1 data-id="229" class="text-3xl md:text-5xl font-black text-white mb-4">About ShorePointIT</h1>
+                    <p data-id="230" class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">A technology consulting firm built for the way modern organizations grow.</p>
                 </div>
             </section>
 
             <!-- Our Story -->
-            <section data-id="216" class="bg-white py-16 md:py-20">
-                <div data-id="217" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row gap-12 items-start">
-                    <div data-id="218" class="md:w-1/2">
-                        <h2 data-id="219" class="text-2xl md:text-3xl font-black text-navy-800 mb-5">Our Story</h2>
-                        <p data-id="220" class="text-slate-600 text-sm leading-relaxed mb-4">ShorePointIT was founded with a simple mission: give growing businesses access to the same enterprise-grade IT infrastructure, cybersecurity, and cloud services that Fortune 500 companies rely on — without the Fortune 500 price tag.</p>
-                        <p data-id="221" class="text-slate-600 text-sm leading-relaxed mb-4">Based in New Jersey, we've built our reputation on responsiveness, technical excellence, and genuine partnership. We don't just fix things when they break — we architect secure, scalable technology environments that prevent problems before they start.</p>
-                        <p data-id="222" class="text-slate-600 text-sm leading-relaxed">Today, ShorePointIT serves businesses across New Jersey and beyond, providing fully managed IT services, cybersecurity, cloud infrastructure, AI integration, and strategic technology consulting. We're proud to be a local team delivering world-class technology outcomes.</p>
+            <section data-id="231" class="bg-white py-16 md:py-20">
+                <div data-id="232" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row gap-12 items-start">
+                    <div data-id="233" class="md:w-1/2">
+                        <h2 data-id="234" class="text-2xl md:text-3xl font-black text-navy-800 mb-5">Our Story</h2>
+                        <p data-id="235" class="text-slate-600 text-sm leading-relaxed mb-4">ShorePointIT was founded with a clear mission: give growing organizations access to the same enterprise-grade IT strategy, cybersecurity, and cloud services that Fortune 500 companies rely on — with the agility and attention of a dedicated partner.</p>
+                        <p data-id="236" class="text-slate-600 text-sm leading-relaxed mb-4">With over 20 years of enterprise IT leadership experience — including 18 years at Microsoft leading technology initiatives — our founder built ShorePointIT to bridge the gap between world-class technology expertise and the practical needs of organizations ready to modernize and scale.</p>
+                        <p data-id="237" class="text-slate-600 text-sm leading-relaxed">Today, ShorePointIT serves organizations across healthcare, financial services, government, retail, and beyond — providing IT strategy, cloud transformation, cybersecurity, managed services, and executive-level technology consulting. We bring discipline, integrity, and a relentless focus on outcomes to every engagement.</p>
                     </div>
-                    <div data-id="223" class="md:w-1/2 w-full">
-                        <div data-id="224" class="bg-navy-800 p-8 flex flex-col gap-6">
-                            <div data-id="225" class="text-center">
-                                <p data-id="226" class="text-3xl font-black text-white">100%</p>
-                                <p data-id="227" class="text-slate-400 text-sm mt-1">Client Retention Rate</p>
+                    <div data-id="238" class="md:w-1/2 w-full">
+                        <div data-id="239" class="bg-navy-800 p-8 flex flex-col gap-6">
+                            <div data-id="240" class="text-center">
+                                <p data-id="241" class="text-3xl font-black text-white">20+ Years</p>
+                                <p data-id="242" class="text-slate-400 text-sm mt-1">Enterprise IT Leadership</p>
                             </div>
-                            <div data-id="228" class="h-px bg-navy-700"></div>
-                            <div data-id="229" class="text-center">
-                                <p data-id="230" class="text-3xl font-black text-white">&lt;15 Min</p>
-                                <p data-id="231" class="text-slate-400 text-sm mt-1">Average Response Time</p>
+                            <div data-id="243" class="h-px bg-navy-700"></div>
+                            <div data-id="244" class="text-center">
+                                <p data-id="245" class="text-3xl font-black text-white">18 Years</p>
+                                <p data-id="246" class="text-slate-400 text-sm mt-1">At Microsoft</p>
                             </div>
-                            <div data-id="232" class="h-px bg-navy-700"></div>
-                            <div data-id="233" class="text-center">
-                                <p data-id="234" class="text-3xl font-black text-white">24/7</p>
-                                <p data-id="235" class="text-slate-400 text-sm mt-1">Monitoring &amp; Support</p>
+                            <div data-id="247" class="h-px bg-navy-700"></div>
+                            <div data-id="248" class="text-center">
+                                <p data-id="249" class="text-3xl font-black text-white">Multi-Industry</p>
+                                <p data-id="250" class="text-slate-400 text-sm mt-1">Healthcare, Finance, Government &amp; More</p>
                             </div>
                         </div>
                     </div>
@@ -601,61 +669,61 @@
             </section>
 
             <!-- Meet the Team -->
-            <section data-id="236" class="bg-lgray-100 py-16 md:py-20">
-                <div data-id="237" class="max-w-4xl mx-auto px-4 md:px-6">
-                    <h2 data-id="238" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">Meet the Team</h2>
-                    <div data-id="239" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div data-id="240" class="bg-white p-8 flex flex-col items-center text-center">
-                            <div data-id="241" class="w-20 h-20 bg-navy-800 flex items-center justify-center text-white font-black text-2xl mb-5">LH</div>
-                            <h3 data-id="242" class="text-lg font-bold text-navy-800">Luis Hernandez</h3>
-                            <p data-id="243" class="text-electric-500 text-sm font-semibold mb-3">Technology Services Leader</p>
-                            <p data-id="244" class="text-slate-500 text-sm leading-relaxed">Luis brings deep expertise in cloud architecture, cybersecurity, and AI integration. He leads client engagements and technology strategy for ShorePointIT.</p>
+            <section data-id="251" class="bg-lgray-100 py-16 md:py-20">
+                <div data-id="252" class="max-w-4xl mx-auto px-4 md:px-6">
+                    <h2 data-id="253" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">Meet the Team</h2>
+                    <div data-id="254" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div data-id="255" class="bg-white p-8 flex flex-col items-center text-center">
+                            <div data-id="256" class="w-20 h-20 bg-navy-800 flex items-center justify-center text-white font-black text-2xl mb-5">LH</div>
+                            <h3 data-id="257" class="text-lg font-bold text-navy-800">Luis Hernandez</h3>
+                            <p data-id="258" class="text-electric-500 text-sm font-semibold mb-3">Founder &amp; Technology Services Leader</p>
+                            <p data-id="259" class="text-slate-500 text-sm leading-relaxed">Luis brings 20+ years of enterprise IT leadership experience, including 18 years at Microsoft. He leads client engagements and technology strategy, specializing in cloud architecture, cybersecurity, and digital transformation for organizations across industries.</p>
                         </div>
-                        <div data-id="245" class="bg-white p-8 flex flex-col items-center text-center">
-                            <div data-id="246" class="w-20 h-20 bg-navy-800 flex items-center justify-center text-white font-black text-2xl mb-5">MH</div>
-                            <h3 data-id="247" class="text-lg font-bold text-navy-800">Mary Hernandez</h3>
-                            <p data-id="248" class="text-electric-500 text-sm font-semibold mb-3">Director of Operations</p>
-                            <p data-id="249" class="text-slate-500 text-sm leading-relaxed">Mary oversees client success, business operations, and strategic partnerships. She ensures every ShorePointIT client receives a world-class experience.</p>
+                        <div data-id="260" class="bg-white p-8 flex flex-col items-center text-center">
+                            <div data-id="261" class="w-20 h-20 bg-navy-800 flex items-center justify-center text-white font-black text-2xl mb-5">MH</div>
+                            <h3 data-id="262" class="text-lg font-bold text-navy-800">Mary Hernandez</h3>
+                            <p data-id="263" class="text-electric-500 text-sm font-semibold mb-3">Director of Operations</p>
+                            <p data-id="264" class="text-slate-500 text-sm leading-relaxed">Mary oversees client success, business operations, and strategic partnerships. She ensures every ShorePointIT engagement delivers a world-class experience and measurable outcomes for our clients.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Our Values -->
-            <section data-id="250" class="bg-white py-16 md:py-20">
-                <div data-id="251" class="max-w-7xl mx-auto px-4 md:px-6">
-                    <h2 data-id="252" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">Our Values</h2>
-                    <div data-id="253" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div data-id="254" class="bg-lgray-100 p-6 text-center">
-                            <i data-id="255" data-lucide="users" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
-                            <h3 data-id="256" class="font-bold text-navy-800 text-base mb-2">Client First</h3>
-                            <p data-id="257" class="text-slate-500 text-sm">Every decision starts with what's best for our clients. Period.</p>
+            <section data-id="265" class="bg-white py-16 md:py-20">
+                <div data-id="266" class="max-w-7xl mx-auto px-4 md:px-6">
+                    <h2 data-id="267" class="text-2xl md:text-3xl font-black text-navy-800 text-center mb-12">Our Values</h2>
+                    <div data-id="268" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div data-id="269" class="bg-lgray-100 p-6 text-center">
+                            <i data-id="270" data-lucide="users" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
+                            <h3 data-id="271" class="font-bold text-navy-800 text-base mb-2">Client First</h3>
+                            <p data-id="272" class="text-slate-500 text-sm">Every decision starts with what's best for our clients. Period.</p>
                         </div>
-                        <div data-id="258" class="bg-lgray-100 p-6 text-center">
-                            <i data-id="259" data-lucide="lock" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
-                            <h3 data-id="260" class="font-bold text-navy-800 text-base mb-2">Security Always</h3>
-                            <p data-id="261" class="text-slate-500 text-sm">Security isn't an add-on — it's embedded in everything we do.</p>
+                        <div data-id="273" class="bg-lgray-100 p-6 text-center">
+                            <i data-id="274" data-lucide="lock" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
+                            <h3 data-id="275" class="font-bold text-navy-800 text-base mb-2">Security Always</h3>
+                            <p data-id="276" class="text-slate-500 text-sm">Security isn't an add-on — it's embedded in everything we do.</p>
                         </div>
-                        <div data-id="262" class="bg-lgray-100 p-6 text-center">
-                            <i data-id="263" data-lucide="trending-up" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
-                            <h3 data-id="264" class="font-bold text-navy-800 text-base mb-2">Build to Scale</h3>
-                            <p data-id="265" class="text-slate-500 text-sm">We architect solutions that grow with your business, not against it.</p>
+                        <div data-id="277" class="bg-lgray-100 p-6 text-center">
+                            <i data-id="278" data-lucide="trending-up" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
+                            <h3 data-id="279" class="font-bold text-navy-800 text-base mb-2">Build to Scale</h3>
+                            <p data-id="280" class="text-slate-500 text-sm">We architect solutions that grow with your organization, not against it.</p>
                         </div>
-                        <div data-id="266" class="bg-lgray-100 p-6 text-center">
-                            <i data-id="267" data-lucide="heart" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
-                            <h3 data-id="268" class="font-bold text-navy-800 text-base mb-2">NJ Proud</h3>
-                            <p data-id="269" class="text-slate-500 text-sm">Rooted in New Jersey, invested in our local business community.</p>
+                        <div data-id="281" class="bg-lgray-100 p-6 text-center">
+                            <i data-id="282" data-lucide="compass" class="w-8 h-8 text-electric-500 mx-auto mb-3"></i>
+                            <h3 data-id="283" class="font-bold text-navy-800 text-base mb-2">Integrity &amp; Accountability</h3>
+                            <p data-id="284" class="text-slate-500 text-sm">Discipline, integrity, and accountability in every engagement.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- CTA -->
-            <section data-id="270" class="bg-electric-500 py-14 md:py-16">
-                <div data-id="271" class="max-w-3xl mx-auto px-4 md:px-6 text-center">
-                    <h2 data-id="272" class="text-2xl md:text-3xl font-black text-white mb-3">Ready to Meet Your IT Team?</h2>
-                    <p data-id="273" class="text-white/80 text-base mb-8">Schedule a free IT audit and see why businesses trust ShorePointIT.</p>
-                    <button data-id="274" id="cta-about-btn-2xmq" class="bg-white text-navy-800 font-bold px-8 py-3.5 text-sm hover:bg-lgray-100 transition-colors">Get a Free IT Audit</button>
+            <section data-id="285" class="bg-electric-500 py-14 md:py-16">
+                <div data-id="286" class="max-w-3xl mx-auto px-4 md:px-6 text-center">
+                    <h2 data-id="287" class="text-2xl md:text-3xl font-black text-white mb-3">Ready to Meet Your Technology Partner?</h2>
+                    <p data-id="288" class="text-white/80 text-base mb-8">Schedule a consultation and see why organizations trust ShorePointIT.</p>
+                    <button data-id="289" id="cta-about-btn-2xmq" class="bg-white text-navy-800 font-bold px-8 py-3.5 text-sm hover:bg-lgray-100 transition-colors">Schedule a Consultation</button>
                 </div>
             </section>
         </div>
@@ -663,69 +731,57 @@
         <!-- ================================================================ -->
         <!-- PAGE: CONTACT -->
         <!-- ================================================================ -->
-        <div data-id="275" id="page-contact" class="page-section">
+        <div data-id="290" id="page-contact" class="page-section">
             <!-- Contact Hero -->
-            <section data-id="276" class="bg-navy-800 hero-grid relative py-16 md:py-20">
-                <div data-id="277" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center">
-                    <h1 data-id="278" class="text-3xl md:text-5xl font-black text-white mb-4">Contact Us</h1>
-                    <p data-id="279" class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">Ready to talk IT? We're here to help.</p>
+            <section data-id="291" class="bg-navy-800 hero-grid relative py-16 md:py-20">
+                <div data-id="292" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center">
+                    <h1 data-id="293" class="text-3xl md:text-5xl font-black text-white mb-4">Contact Us</h1>
+                    <p data-id="294" class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">Ready to modernize your technology? We're here to help.</p>
                 </div>
             </section>
 
             <!-- Contact Content -->
-            <section data-id="280" class="bg-white py-16 md:py-20">
-                <div data-id="281" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row gap-12">
+            <section data-id="295" class="bg-white py-16 md:py-20">
+                <div data-id="296" class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row gap-12">
                     <!-- Form -->
-                    <div data-id="282" class="md:w-1/2">
-                        <h2 data-id="283" class="text-xl font-bold text-navy-800 mb-6">Send Us a Message</h2>
-                        <form data-id="284" id="contact-form-page-9xjq" class="flex flex-col gap-4">
-                            <div data-id="285" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <input data-id="286" type="text" placeholder="First Name" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
-                                <input data-id="287" type="text" placeholder="Last Name" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
+                    <div data-id="297" class="md:w-1/2">
+                        <h2 data-id="298" class="text-xl font-bold text-navy-800 mb-6">Send Us a Message</h2>
+                        <div data-id="299" data-fs-success style="display:none; color:#2563EB; font-weight:600; padding:14px 16px; margin-bottom:12px; background:rgba(37,99,235,0.08); border:1px solid rgba(37,99,235,0.2); border-radius:6px;">✅ Thank you! Your message has been sent. We'll be in touch within 1 hour.</div>
+                        <div data-id="300" data-fs-error style="color:#ef4444; font-weight:500; padding:8px; margin-bottom:8px;"></div>
+                        <form data-id="301" id="contact-form-2" class="flex flex-col gap-4">
+                            <div data-id="302" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input data-id="303" type="text" placeholder="First Name" data-fs-field="firstName" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
+                                <input data-id="304" type="text" placeholder="Last Name" data-fs-field="lastName" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
                             </div>
-                            <input data-id="288" type="text" placeholder="Company Name" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
-                            <input data-id="289" type="email" placeholder="Email" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
-                            <input data-id="290" type="tel" placeholder="Phone" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
-                            <textarea data-id="291" placeholder="How can we help?" rows="5" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500 resize-none"></textarea>
-                            <button data-id="292" type="submit" class="bg-navy-800 hover:bg-navy-900 text-white font-semibold px-7 py-3 text-sm transition-colors self-start">Send Message</button>
+                            <input data-id="305" type="text" placeholder="Organization Name" data-fs-field="organization" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
+                            <input data-id="306" type="email" placeholder="Email" data-fs-field="email" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" required />
+                            <span data-id="307" data-fs-error="email" class="text-xs" style="color:#ef4444;"></span>
+                            <input data-id="308" type="tel" placeholder="Phone" data-fs-field="phone" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500" />
+                            <textarea data-id="309" placeholder="Tell us about your technology challenges" rows="5" data-fs-field="message" class="w-full bg-lgray-100 px-4 py-3 text-sm text-navy-800 border border-lgray-200 focus:outline-none focus:border-electric-500 resize-none"></textarea>
+                            <span data-id="310" data-fs-error="message" class="text-xs" style="color:#ef4444;"></span>
+                            <button data-id="311" type="submit" data-fs-submit-btn class="bg-navy-800 hover:bg-navy-900 text-white font-semibold px-7 py-3 text-sm transition-colors self-start">Send Message</button>
                         </form>
-                        <div data-id="293" id="success-msg-contact-7xmq" class="success-msg items-center gap-2 mt-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 text-sm">
-                            <i data-id="294" data-lucide="check-circle" class="w-5 h-5"></i>
-                            Thank you! We'll be in touch within one business day.
-                        </div>
                     </div>
-                    <!-- Info + Map -->
-                    <div data-id="295" class="md:w-1/2 flex flex-col gap-8">
-                        <div data-id="296">
-                            <h2 data-id="297" class="text-xl font-bold text-navy-800 mb-6">Contact Information</h2>
-                            <div data-id="298" class="flex flex-col gap-4">
-                                <div data-id="299" class="flex items-start gap-3">
-                                    <i data-id="300" data-lucide="phone" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                    <div data-id="301">
-                                        <p data-id="302" class="font-semibold text-navy-800 text-sm">855-5-SHOREPOINT</p>
-                                        <p data-id="303" class="text-slate-500 text-sm">(855) 574-6737</p>
+                    <!-- Info -->
+                    <div data-id="312" class="md:w-1/2 flex flex-col gap-8">
+                        <div data-id="313">
+                            <h2 data-id="314" class="text-xl font-bold text-navy-800 mb-6">Contact Information</h2>
+                            <div data-id="315" class="flex flex-col gap-4">
+                                <div data-id="316" class="flex items-start gap-3">
+                                    <i data-id="317" data-lucide="phone" class="w-5 h-5 text-electric-500 mt-0.5"></i>
+                                    <div data-id="318">
+                                        <p data-id="319" class="font-semibold text-navy-800 text-sm">855-5-SHOREPOINT</p>
+                                        <p data-id="320" class="text-slate-500 text-sm">(855) 574-6737</p>
                                     </div>
                                 </div>
-                                <div data-id="304" class="flex items-start gap-3">
-                                    <i data-id="305" data-lucide="mail" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                    <p data-id="306" class="text-slate-600 text-sm">info@shorepointit.com</p>
+                                <div data-id="321" class="flex items-start gap-3">
+                                    <i data-id="322" data-lucide="mail" class="w-5 h-5 text-electric-500 mt-0.5"></i>
+                                    <p data-id="323" class="text-slate-600 text-sm">info@shorepointit.com</p>
                                 </div>
-                                <div data-id="307" class="flex items-start gap-3">
-                                    <i data-id="308" data-lucide="map-pin" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                    <p data-id="309" class="text-slate-600 text-sm">130 W Water St, Unit 131<br data-id="310">Toms River, NJ 08753</p>
+                                <div data-id="324" class="flex items-start gap-3">
+                                    <i data-id="325" data-lucide="clock" class="w-5 h-5 text-electric-500 mt-0.5"></i>
+                                    <p data-id="326" class="text-slate-600 text-sm">Monday–Friday, 9:00 AM – 6:00 PM ET</p>
                                 </div>
-                                <div data-id="311" class="flex items-start gap-3">
-                                    <i data-id="312" data-lucide="clock" class="w-5 h-5 text-electric-500 mt-0.5"></i>
-                                    <p data-id="313" class="text-slate-600 text-sm">Monday–Friday, 9:00 AM – 6:00 PM ET</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Map placeholder -->
-                        <div data-id="314" class="map-placeholder w-full h-64 flex items-center justify-center">
-                            <div data-id="315" class="text-center">
-                                <i data-id="316" data-lucide="map-pin" class="w-8 h-8 text-electric-500 mx-auto mb-2"></i>
-                                <p data-id="317" class="text-white font-bold text-sm">Toms River, New Jersey</p>
-                                <p data-id="318" class="text-slate-400 text-xs">130 W Water St, Unit 131</p>
                             </div>
                         </div>
                     </div>
@@ -735,53 +791,49 @@
     </main>
 
     <!-- ====== FOOTER ====== -->
-    <footer data-id="319" id="footer-2xnq" class="bg-navy-900 text-white pt-14 pb-6">
-        <div data-id="320" class="max-w-7xl mx-auto px-4 md:px-6">
-            <div data-id="321" class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+    <footer data-id="327" id="footer-2xnq" class="bg-navy-900 text-white pt-14 pb-6">
+        <div data-id="328" class="max-w-7xl mx-auto px-4 md:px-6">
+            <div data-id="329" class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
                 <!-- Left -->
-                <div data-id="322">
-                    <div data-id="323" class="text-xl font-bold mb-3"><span data-id="324" class="text-white">ShorePoint</span><span data-id="325" class="text-electric-500">IT</span></div>
-                    <p data-id="326" class="text-electric-400 text-sm font-semibold mb-3">Cloud-Ready. AI-Enabled. Fully Secure.</p>
-                    <p data-id="327" class="text-slate-400 text-sm leading-relaxed">Enterprise-grade managed IT services, cybersecurity, and cloud solutions for growing businesses in New Jersey and beyond.</p>
+                <div data-id="330">
+                    <div data-id="331" class="text-xl font-bold mb-3"><span data-id="332" class="text-white">ShorePoint</span><span data-id="333" class="text-electric-500">IT</span></div>
+                    <p data-id="334" class="text-electric-400 text-sm font-semibold mb-3">Enterprise IT Expertise. Practical Business Outcomes.</p>
+                    <p data-id="335" class="text-slate-400 text-sm leading-relaxed">Boutique technology consulting firm delivering enterprise-grade IT strategy, cloud transformation, cybersecurity, and managed services to organizations ready to modernize and scale.</p>
                 </div>
                 <!-- Center -->
-                <div data-id="328">
-                    <h4 data-id="329" class="font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
-                    <div data-id="330" class="flex flex-col gap-2">
-                        <a data-id="331" href="#" data-page="home" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">Home</a>
-                        <a data-id="332" href="#" data-page="services" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">Services</a>
-                        <a data-id="333" href="#" data-page="about" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">About</a>
-                        <a data-id="334" href="#" data-page="contact" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">Contact</a>
-                        <a data-id="335" href="#" class="text-slate-400 text-sm hover:text-white transition-colors">Remote Support</a>
+                <div data-id="336">
+                    <h4 data-id="337" class="font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+                    <div data-id="338" class="flex flex-col gap-2">
+                        <a data-id="339" href="#" data-page="home" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">Home</a>
+                        <a data-id="340" href="#" data-page="services" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">Services</a>
+                        <a data-id="341" href="#" data-page="about" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">About</a>
+                        <a data-id="342" href="#" data-page="contact" class="footer-link text-slate-400 text-sm hover:text-white transition-colors">Contact</a>
                     </div>
                 </div>
                 <!-- Right -->
-                <div data-id="336">
-                    <h4 data-id="337" class="font-bold text-sm uppercase tracking-wider mb-4">Contact</h4>
-                    <div data-id="338" class="flex flex-col gap-3">
-                        <div data-id="339" class="flex items-center gap-2">
-                            <i data-id="340" data-lucide="phone" class="w-4 h-4 text-electric-400"></i>
-                            <span data-id="341" class="text-slate-400 text-sm">(855) 574-6737</span>
+                <div data-id="343">
+                    <h4 data-id="344" class="font-bold text-sm uppercase tracking-wider mb-4">Contact</h4>
+                    <div data-id="345" class="flex flex-col gap-3">
+                        <div data-id="346" class="flex items-center gap-2">
+                            <i data-id="347" data-lucide="phone" class="w-4 h-4 text-electric-400"></i>
+                            <span data-id="348" class="text-slate-400 text-sm">(855) 574-6737</span>
                         </div>
-                        <div data-id="342" class="flex items-center gap-2">
-                            <i data-id="343" data-lucide="mail" class="w-4 h-4 text-electric-400"></i>
-                            <span data-id="344" class="text-slate-400 text-sm">info@shorepointit.com</span>
-                        </div>
-                        <div data-id="345" class="flex items-start gap-2">
-                            <i data-id="346" data-lucide="map-pin" class="w-4 h-4 text-electric-400 mt-0.5"></i>
-                            <span data-id="347" class="text-slate-400 text-sm">130 W Water St, Unit 131<br data-id="348">Toms River, NJ 08753</span>
+                        <div data-id="349" class="flex items-center gap-2">
+                            <i data-id="350" data-lucide="mail" class="w-4 h-4 text-electric-400"></i>
+                            <span data-id="351" class="text-slate-400 text-sm">info@shorepointit.com</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div data-id="349" class="border-t border-navy-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p data-id="350" class="text-slate-500 text-xs">&copy; 2026 ShorePointIT LLC. All Rights Reserved.</p>
-                <div data-id="351" class="flex items-center gap-4">
-                    <a data-id="352" href="#" class="text-slate-500 hover:text-white transition-colors"><i data-id="353" data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a data-id="354" href="#" class="text-slate-500 hover:text-white transition-colors"><i data-id="355" data-lucide="facebook" class="w-5 h-5"></i></a>
+            <div data-id="352" class="border-t border-navy-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p data-id="353" class="text-slate-500 text-xs">&copy; 2026 ShorePointIT LLC. All Rights Reserved.</p>
+                <div data-id="354" class="flex items-center gap-4">
+                    <a data-id="355" href="#" class="text-slate-500 hover:text-white transition-colors"><i data-id="356" data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a data-id="357" href="#" class="text-slate-500 hover:text-white transition-colors"><i data-id="358" data-lucide="facebook" class="w-5 h-5"></i></a>
                 </div>
             </div>
-            <p data-id="356" class="text-center text-xs text-slate-600 mt-6">Made by Copilot</p>
+            <p data-id="359" class="text-center text-xs text-slate-600 mt-4">Veteran-Owned Business</p>
+            <p data-id="360" class="text-center text-xs text-slate-600 mt-2">Made by Copilot</p>
         </div>
     </footer>
 
@@ -793,27 +845,31 @@
 
     // ===================== DATA =====================
     const servicesData = [
-        { icon: 'monitor', title: 'Managed IT Services', short: 'Your complete outsourced IT department, proactively managed 24/7.', long: 'Your complete outsourced IT department, proactively managed 24/7. We handle everything from infrastructure monitoring and patch management to user support and vendor coordination. ShorePointIT becomes an extension of your team — anticipating issues, resolving them fast, and keeping your technology aligned with your goals.' },
-        { icon: 'shield-alert', title: 'Cybersecurity & Threat Protection', short: 'Zero Trust architecture and AI-powered threat detection.', long: 'Zero Trust architecture and AI-powered threat detection designed to protect your business from ransomware, phishing, and advanced persistent threats. We deploy multi-layered defenses including endpoint detection, SIEM monitoring, and real-time threat intelligence — all managed 24/7 by our security operations team.' },
-        { icon: 'cloud', title: 'Cloud Solutions', short: 'Microsoft 365, Azure, and AWS infrastructure built for your business.', long: 'Microsoft 365, Azure, and AWS infrastructure built specifically for your business. We handle cloud migration, configuration, optimization, and ongoing management so you can leverage enterprise-grade cloud without the complexity. From email to full virtual desktop infrastructure, we architect solutions that scale.' },
-        { icon: 'cpu', title: 'AI Integration & Automation', short: 'Operationalize AI tools to work smarter, not harder.', long: 'Operationalize AI tools to work smarter, not harder. We help businesses integrate AI-powered automation into their daily workflows — from intelligent document processing and chatbot deployment to predictive analytics and Microsoft Copilot rollouts. We turn AI from a buzzword into a business advantage.' },
-        { icon: 'headset', title: 'Help Desk Support', short: 'Fast, friendly support for your team when issues arise.', long: 'Fast, friendly support for your team when issues arise. Our help desk operates with an average response time under 15 minutes. Whether it\'s a password reset, application issue, or hardware malfunction, our team delivers knowledgeable, patient support that keeps your employees productive.' },
-        { icon: 'database', title: 'Data Backup & Disaster Recovery', short: 'Bulletproof backup so your business never stops.', long: 'Bulletproof backup so your business never stops. We implement comprehensive backup strategies with automated, encrypted offsite replication and tested disaster recovery plans. When the unexpected hits — ransomware, hardware failure, natural disaster — we get you back online fast.' },
-        { icon: 'wifi', title: 'Network Security & Firewall', short: 'Perimeter defense and ongoing network monitoring.', long: 'Perimeter defense and ongoing network monitoring to protect your business from unauthorized access and network-borne threats. We deploy enterprise-grade firewalls, intrusion detection systems, VPN infrastructure, and network segmentation — all continuously monitored and managed by our team.' },
-        { icon: 'file-check', title: 'Compliance IT Services', short: 'HIPAA, SOC2, and regulatory compliance made simple.', long: 'HIPAA, SOC2, and regulatory compliance made simple. We help healthcare providers, financial firms, and regulated businesses meet their compliance obligations with proper controls, documentation, risk assessments, and audit preparation. Compliance doesn\'t have to be overwhelming — we make it manageable.' },
-        { icon: 'graduation-cap', title: 'Security Awareness Training', short: 'Turn your team into your strongest security asset.', long: 'Turn your team into your strongest security asset. We deliver ongoing security awareness training programs that educate your employees on phishing, social engineering, password hygiene, and data handling best practices. Simulated phishing campaigns measure progress and reinforce good habits.' },
-        { icon: 'phone-call', title: 'VoIP & Business Phone', short: 'Modern cloud phone systems for distributed teams.', long: 'Modern cloud phone systems for distributed teams. We deploy and manage VoIP solutions that offer enterprise calling features — auto attendants, call routing, voicemail-to-email, mobile integration — at a fraction of the cost of traditional phone systems. Work from anywhere with a professional phone presence.' },
-        { icon: 'screen-share', title: 'Remote IT Support', short: 'Instant expert help delivered directly to your screen.', long: 'Instant expert help delivered directly to your screen. Our remote support team can securely connect to any device in your organization within minutes to diagnose and resolve issues in real time. No waiting for a technician to drive over — most problems are solved remotely in a single session.' },
-        { icon: 'compass', title: 'Strategic IT Consulting', short: 'Long-term technology roadmapping aligned to your goals.', long: 'Long-term technology roadmapping aligned to your goals. We work with business leaders to develop multi-year IT strategies that support growth, improve efficiency, and manage risk. From budgeting and vendor selection to architecture planning and digital transformation, we provide the strategic guidance that keeps your technology ahead of the curve.' },
+        { icon: 'compass', title: 'IT Strategy & Advisory', short: 'Align technology investments with business goals using proven enterprise frameworks.', long: 'Align technology investments with business goals using proven enterprise frameworks. We work with leadership to develop IT strategies that support growth, manage risk, and maximize ROI — informed by 20+ years of enterprise experience at organizations like Microsoft.' },
+        { icon: 'cloud', title: 'Cloud Transformation', short: 'Microsoft Azure and M365 migration, optimization, and governance at scale.', long: 'Microsoft Azure and M365 migration, optimization, and governance at scale. We architect, migrate, and manage cloud environments that deliver performance, security, and cost efficiency — drawing on deep expertise in the Microsoft ecosystem.' },
+        { icon: 'shield-alert', title: 'Cybersecurity & Risk Management', short: 'Identify vulnerabilities, implement controls, and build a resilient security posture.', long: 'Identify vulnerabilities, implement controls, and build a resilient security posture. We deploy multi-layered defenses including Zero Trust architecture, threat detection, compliance frameworks, and incident response planning — tailored to your industry and risk profile.' },
+        { icon: 'monitor', title: 'Managed IT Services', short: 'Proactive monitoring, support, and management of your technology infrastructure.', long: 'Proactive monitoring, support, and management of your technology infrastructure. ShorePointIT becomes an extension of your team — anticipating issues, resolving them fast, and keeping your technology aligned with your organizational goals.' },
+        { icon: 'briefcase', title: 'Fractional CIO / vCIO Services', short: 'Executive-level technology leadership without the full-time cost.', long: 'Executive-level technology leadership without the full-time cost. Get a seasoned technology executive who understands your business, aligns IT with strategy, manages vendor relationships, and provides board-level reporting and guidance — on a fractional basis.' },
+        { icon: 'users', title: 'Customer Success & Technology Adoption', short: 'Drive user adoption and maximize ROI on technology investments.', long: 'Drive user adoption and maximize ROI on technology investments. We develop adoption strategies, training programs, and change management frameworks that ensure your teams fully leverage the technology you\'ve invested in — turning tools into outcomes.' },
+        { icon: 'clipboard-check', title: 'Project & Program Delivery', short: 'End-to-end management of complex IT initiatives on time and on budget.', long: 'End-to-end management of complex IT initiatives on time and on budget. From cloud migrations and security overhauls to digital transformation programs, we bring the project management rigor and technical expertise needed to deliver complex initiatives successfully.' },
+        { icon: 'settings', title: 'Microsoft 365 & Azure Optimization', short: 'Reduce costs and improve performance across your Microsoft ecosystem.', long: 'Reduce costs and improve performance across your Microsoft ecosystem. We audit, optimize, and govern your Microsoft 365 and Azure environments — eliminating waste, improving security configurations, and ensuring you\'re getting maximum value from your Microsoft investment.' },
+    ];
+
+    const segmentsData = [
+        { icon: 'building', title: 'Small & Mid-Market Businesses', desc: 'Enterprise-caliber IT strategy and infrastructure for growing organizations.' },
+        { icon: 'heart-pulse', title: 'Healthcare Organizations', desc: 'HIPAA-compliant technology solutions that protect patient data and streamline operations.' },
+        { icon: 'landmark', title: 'Financial Services Firms', desc: 'Secure, compliant technology infrastructure for firms managing sensitive financial data.' },
+        { icon: 'shield', title: 'Government & Public Sector', desc: 'Technology modernization and cybersecurity for public sector organizations.' },
+        { icon: 'hand-heart', title: 'Nonprofits & Mission-Driven Organizations', desc: 'Cost-effective technology solutions that maximize impact for mission-driven teams.' },
+        { icon: 'factory', title: 'Retail & Manufacturing', desc: 'Scalable IT infrastructure and digital transformation for retail and manufacturing operations.' },
     ];
 
     const faqData = [
-        { q: 'What is managed IT and how does it help my business?', a: 'Managed IT means having a dedicated technology partner who proactively monitors, maintains, and secures your systems — so problems are solved before they impact your business.' },
-        { q: 'How quickly do you respond to IT issues?', a: 'Our average response time is under 15 minutes. Critical issues receive immediate attention 24/7.' },
-        { q: 'Do you support Microsoft 365 and cloud services?', a: 'Yes. We are Microsoft 365 specialists and also support Azure, AWS, and Google Cloud environments.' },
-        { q: 'What cybersecurity services do you provide?', a: 'We offer Zero Trust architecture, AI-powered threat detection, firewall management, security awareness training, compliance support, and incident response.' },
-        { q: 'Do you offer contracts or month-to-month agreements?', a: 'We offer flexible month-to-month agreements with no long-term lock-in. We earn your business every month.' },
-        { q: 'Are you local and do you offer on-site support?', a: 'Yes. We are based in New Jersey and provide on-site support throughout the region alongside our 24/7 remote support.' },
+        { q: 'What makes ShorePointIT different from other IT consulting firms?', a: 'ShorePointIT is led by a former Microsoft technology leader with 20+ years of enterprise experience. We bring Fortune 500 rigor and expertise to organizations of every size — as a boutique firm that delivers the agility and attention of a dedicated partner.' },
+        { q: 'What industries do you serve?', a: 'We serve organizations across healthcare, financial services, government, retail, manufacturing, and the nonprofit sector. Our multi-industry experience allows us to bring proven frameworks and best practices to every engagement.' },
+        { q: 'What is a Fractional CIO / vCIO?', a: 'A Fractional CIO provides executive-level technology leadership on a part-time or project basis. You get the strategic guidance of a seasoned technology executive — IT roadmapping, vendor management, board-level reporting — without the full-time cost.' },
+        { q: 'Do you support Microsoft 365 and Azure environments?', a: 'Yes. With 18 years of experience at Microsoft, our founder brings deep expertise in the Microsoft ecosystem. We specialize in M365 and Azure migration, optimization, security, and governance.' },
+        { q: 'Do you offer flexible engagement models?', a: 'Yes. We offer project-based, retainer, and fractional engagement models. We tailor our approach to fit your organization\'s needs, timeline, and budget.' },
     ];
 
     // ===================== RENDER SERVICE CARDS =====================
@@ -834,6 +890,27 @@
 
     renderServiceCards('home-services-grid-2xnq', false);
     renderServiceCards('services-page-grid-7xnq', true);
+
+    // ===================== RENDER SEGMENTS =====================
+    function renderSegments(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = segmentsData.map((s, i) => `
+            <div class="segment-card bg-white p-6 flex items-start gap-4">
+                <i data-lucide="${s.icon}" class="w-8 h-8 text-electric-500 flex-shrink-0 mt-0.5"></i>
+                <div>
+                    <h3 class="font-bold text-navy-800 text-base mb-1">${s.title}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">${s.desc}</p>
+                </div>
+            </div>
+        `).join('');
+        if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
+            lucide.createIcons();
+        }
+    }
+
+    renderSegments('segments-grid');
+    renderSegments('segments-grid-services');
 
     // ===================== RENDER FAQ =====================
     function renderFAQ() {
@@ -869,16 +946,13 @@
 
     // ===================== PAGE NAVIGATION =====================
     function navigateTo(page) {
-        // Hide all pages
         document.querySelectorAll('.page-section').forEach(p => {
             p.classList.remove('active');
         });
-        // Show target
         const target = document.getElementById('page-' + page);
         if (target) {
             target.classList.add('active');
         }
-        // Update nav active states
         document.querySelectorAll('.nav-link').forEach(l => {
             l.classList.remove('active');
             l.classList.add('text-slate-400');
@@ -896,9 +970,7 @@
                 l.classList.remove('text-slate-400');
             }
         });
-        // Close mobile menu
         document.getElementById('mobile-menu-2vnp').classList.add('hidden');
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -942,7 +1014,6 @@
     });
 
     // ===================== CTA BUTTONS =====================
-    // All "Book Free IT Audit" / CTA buttons navigate to Contact page
     const ctaButtons = [
         'top-cta-btn-7hzq', 'mobile-cta-btn-2nxl', 'hero-cta-1-9xpq',
         'cta-banner-btn-home-5xmq', 'cta-services-btn-8xmq',
@@ -972,25 +1043,15 @@
         e.preventDefault();
         navigateTo('about');
     });
+    </script>
 
-    // ===================== FORM SUBMISSION =====================
-    document.getElementById('contact-form-home-3xjq').addEventListener('submit', function(e) {
-        e.preventDefault();
-        this.reset();
-        document.getElementById('success-msg-home-4xmq').classList.add('show');
-        setTimeout(function() {
-            document.getElementById('success-msg-home-4xmq').classList.remove('show');
-        }, 5000);
-    });
-
-    document.getElementById('contact-form-page-9xjq').addEventListener('submit', function(e) {
-        e.preventDefault();
-        this.reset();
-        document.getElementById('success-msg-contact-7xmq').classList.add('show');
-        setTimeout(function() {
-            document.getElementById('success-msg-contact-7xmq').classList.remove('show');
-        }, 5000);
-    });
+    <!-- Formspree Initialization -->
+    <script>
+      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+      // Initialize all contact forms
+      document.querySelectorAll('form[id^="contact-form"]').forEach(function(form) {
+        formspree('initForm', { formElement: '#' + form.id, formId: 'mvznekbz' });
+      });
     </script>
 </body>
 </html>
