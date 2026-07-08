@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ShorePoint<span style="color:#2563eb;">IT</span> | Technology That Drives Business Results</title>
+  <title>ShorePointIT | Technology That Drives Business Results</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="ShorePointIT provides Cloud, Cybersecurity, and AI-powered IT support tailored for small businesses." />
 
@@ -15,250 +15,25 @@
   gtag('config', 'G-TNV38K77GR');
 </script>
 
+<!-- ShorePointIT CSS -->
+ <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<!-- ShorePointIT CSS -->
+ 
+<link rel="stylesheet" href="css/site.css" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png" />
+  
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <style>
-    :root {
-      --navy: #0f1f3d;
-      --electric-blue: #2563eb;
-      --text-main: #ffffff;
-      --text-muted: #d1d5db;
-      --border-light: #334155;
-      --bg-light: #0f1f3d;
-    }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
-      background-color: var(--bg-light);
-      line-height: 1.6;
-    }
-
-    header, main, footer {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.1rem; /* tighter */
-    }
-
-    header {
-      border-bottom: 1px solid var(--border-light);
-      margin-bottom: 0.1rem; /* tighter */
-    }
-
-    .brand {
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: #ffffff;
-    }
-
-    .brand span {
-      color: var(--electric-blue);
-    }
-
-    .tagline {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    nav a {
-      font-size: 0.95rem;
-      color: var(--electric-blue);
-      text-decoration: none;
-      margin-right: 1rem;
-    }
-
-    /* Accent Bar (thinner) */
-    .accent-bar {
-      width: 100%;
-      height: 2px; /* thinner */
-      background-color: var(--electric-blue);
-      border-radius: 999px;
-      margin: 1.25rem 0;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 1.75rem 1.5rem; /* moved up more */
-      background-color: var(--navy);
-      color: #ffffff;
-      border-radius: 12px;
-      margin-top: 0.1rem; /* minimal space */
-    }
-
-    .hero h1 {
-      font-size: 2.6rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      margin-bottom: 1.25rem;
-      color: var(--text-muted);
-      max-width: 720px;
-    }
-
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .btn-primary, .btn-secondary {
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background-color: var(--electric-blue);
-      color: #ffffff;
-      border: none;
-    }
-
-    .btn-secondary {
-      border: 1px solid #ffffff;
-      color: #ffffff;
-      background-color: transparent;
-    }
-
-    /* CTA PHONE BOX */
-    .cta-box {
-      background-color: #11254d;
-      border: 2px solid var(--electric-blue);
-      border-radius: 20px;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-left: auto;
-    }
-
-    .cta-box h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      color: #ffffff;
-    }
-
-    .cta-box h3 span {
-      color: var(--electric-blue); /* only IT blue */
-    }
-
-    .cta-box p {
-      margin: 0.25rem 0 0;
-      font-size: 1.55rem; /* larger */
-      font-weight: 800; /* bolder */
-      color: #ffffff;
-    }
-
-    .call-btn {
-      background-color: var(--electric-blue);
-      color: #ffffff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      white-space: nowrap;
-    }
-
-    section {
-      margin: 2rem 0;
-    }
-
-    section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
-      color: #ffffff;
-    }
-
-    section p {
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    /* Oval Grid */
-    .oval-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .oval-card {
-      border: 3px solid var(--electric-blue);
-      border-radius: 40px;
-      padding: 2rem;
-      text-align: center;
-      background-color: #0f1f3d;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .oval-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
-    }
-
-    .oval-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--electric-blue);
-    }
-
-    /* Contact Form */
-    .contact-form {
-      background-color: #11254d;
-      padding: 2rem;
-      border-radius: 20px;
-      border: 2px solid var(--electric-blue);
-      margin-top: 2rem;
-    }
-
-    .contact-form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--text-main);
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: 1px solid var(--border-light);
-      margin-bottom: 1rem;
-      background-color: #0f1f3d;
-      color: #ffffff;
-    }
-
-    .contact-form button {
-      background-color: var(--electric-blue);
-      color: #ffffff;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    footer {
-      border-top: 1px solid var(--border-light);
-      margin-top: 2rem;
-      padding-top: 1.25rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-  </style>
+ 
 </head>
 
 <body>
@@ -327,7 +102,7 @@
     <section id="services">
       <h2>ShorePoint<span style="color:#2563eb;">IT</span> Services</h2>
 
-      <div class="oval-grid">
+      <div class="industries-grid">
 
         <div class="oval-card">
           <div class="oval-icon">💻</div>
@@ -371,67 +146,57 @@
     <div class="accent-bar"></div>
 
     <!-- INDUSTRIES -->
-    <section id="industries">
-      <h2>Industries ShorePoint<span style="color:#2563eb;">IT</span> Supports</h2>
+<section id="industries">
+  <h2>
+    Industries ShorePoint<span style="color:#2563eb;">IT</span> Supports
+  </h2>
 
-      <div class="oval-grid">
+  <div class="industries-grid">
 
-        <div class="oval-card">
-          <div class="oval-icon">🍽️</div>
-          <h3>Restaurants & Hospitality</h3>
-          <p>POS, Wi‑Fi, security, and uptime support.</p>
-        </div>
+    <div class="oval-card">
+      <div class="oval-icon">🍽️</div>
+      <h3>Restaurants & Hospitality</h3>
+      <p>POS, Wi‑Fi, security, and uptime support.</p>
+    </div>
 
-        <div class="oval-card">
-          <div class="oval-icon">🩺</div>
-          <h3>Medical & Dental Offices</h3>
-          <p>HIPAA‑aligned security and reliable systems.</p>
-        </div>
+    <div class="oval-card">
+      <div class="oval-icon">🩺</div>
+      <h3>Medical & Dental Offices</h3>
+      <p>HIPAA‑aligned security and reliable systems.</p>
+    </div>
 
-        <div class="oval-card">
-          <div class="oval-icon">🛍️</div>
-          <h3>Retail & POS</h3>
-          <p>Secure networks and fast support.</p>
-        </div>
+    <div class="oval-card">
+      <div class="oval-icon">🛍️</div>
+      <h3>Retail & POS</h3>
+      <p>Secure networks and fast support.</p>
+    </div>
 
-        <div class="oval-card">
-          <div class="oval-icon">🛠️</div>
-          <h3>Contractors & Trades</h3>
-          <p>Mobile‑friendly tools and secure access.</p>
-        </div>
+    <div class="oval-card">
+      <div class="oval-icon">🛠️</div>
+      <h3>Contractors & Trades</h3>
+      <p>Mobile‑friendly tools and secure access.</p>
+    </div>
 
-        <div class="oval-card">
-          <div class="oval-icon">💇‍♀️</div>
-          <h3>Salons & Studios</h3>
-          <p>Booking systems, Wi‑Fi, and device support.</p>
-        </div>
+    <div class="oval-card">
+      <div class="oval-icon">💇‍♀️</div>
+      <h3>Salons & Studios</h3>
+      <p>Booking systems, Wi‑Fi, and device support.</p>
+    </div>
 
-        <div class="oval-card">
-          <div class="oval-icon">📄</div>
-          <h3>Professional Services</h3>
-          <p>Secure email, cloud storage, and compliance.</p>
-        </div>
+    <div class="oval-card">
+      <div class="oval-icon">📄</div>
+      <h3>Professional Services</h3>
+      <p>Secure email, cloud storage, and compliance.</p>
+    </div>
 
-        <div class="oval-card">
-          <div class="oval-icon">🏢</div>
-          <h3>Real Estate & Property Management</h3>
-          <p>Cloud tools, automation, and secure access.</p>
-        </div>
+    <div class="oval-card">
+      <div class="oval-icon">🏢</div>
+      <h3>Real Estate & Property Management</h3>
+      <p>Cloud tools, automation, and secure access.</p>
+    </div>
 
-      </div>
-    </section>
-
-    <div class="accent-bar"></div>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About ShorePoint<span style="color:#2563eb;">IT</span></h2>
-      <p>
-        ShorePointIT is a modern Managed Service Provider built for small businesses.
-        With 20+ years of engineering leadership experience and a cloud‑first approach,
-        ShorePointIT delivers enterprise‑grade IT solutions without enterprise complexity.
-      </p>
-    </section>
+  </div>
+</section>
 
     <div class="accent-bar"></div>
 
@@ -443,8 +208,8 @@
         <form action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="095e9023-bd91-4c89-a911-679292d03235">
           <input type="hidden" name="from_name" value="ShorePointIT Website Lead">
+          <input type="hidden" name="subject" value="New ShorePointIT Website Lead">
           <input type="hidden" name="redirect" value="https://shorepointit.com/thank-you.html">
-
           <label>Company Name</label>
           <input type="text" name="company" placeholder="ShorePointIT" required>
 
@@ -456,11 +221,18 @@
 
           <label>Phone</label>
           <input type="text" name="phone">
+<label>Message</label>
+<textarea name="message" rows="5" required></textarea>
 
-          <label>Message</label>
-          <textarea name="message" rows="5" required></textarea>
 
-          <button type="submit">Send Message</button>
+<div style="margin:20px 0;">
+    <div class="g-recaptcha"
+         data-sitekey="6Ld7kC0tAAAAAMaH9TiknlMUFYUwXlhDCzfqSTco">
+    </div>
+</div>
+
+<button type="submit">Send Message</button>
+
         </form>
       </div>
     </section>
@@ -482,6 +254,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

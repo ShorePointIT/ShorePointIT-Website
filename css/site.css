@@ -1,0 +1,353 @@
+/* =====================================================
+   ShorePointIT Shared Site Styles
+   ===================================================== */
+
+:root {
+    --navy: #0f1f3d;
+    --electric-blue: #2563eb;
+    --text-main: #ffffff;
+    --text-muted: #d1d5db;
+    --border-light: #334155;
+    --bg-light: #0f1f3d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header,
+main,
+footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.1rem;
+}
+
+/* =====================================================
+   Header
+   ===================================================== */
+
+header {
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 0.1rem;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+
+.brand-it {
+    color: var(--electric-blue);
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav a {
+    font-size: 0.95rem;
+    color: var(--electric-blue);
+    font-weight: 600;
+}
+
+/* =====================================================
+   Accent Line
+   ===================================================== */
+
+.accent-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--electric-blue);
+    border-radius: 999px;
+    margin: 1.25rem 0;
+}
+
+/* =====================================================
+   Hero
+   ===================================================== */
+
+.hero {
+    position: relative;
+    padding: 5rem 3rem;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15,31,61,.92) 0%,
+            rgba(15,31,61,.82) 40%,
+            rgba(15,31,61,.55) 100%
+        ),
+        url("../images/hero-tablet.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-muted);
+    max-width: 720px;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+/* =====================================================
+   Buttons
+   ===================================================== */
+
+.btn-primary,
+.btn-secondary,
+.call-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--electric-blue);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.call-btn {
+    background-color: var(--electric-blue);
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+/* =====================================================
+   CTA Box
+   ===================================================== */
+
+.cta-box {
+    background-color: #11254d;
+    border: 2px solid var(--electric-blue);
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.cta-box h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.cta-box p {
+    margin: 0.25rem 0 0;
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+/* =====================================================
+   Sections
+   ===================================================== */
+
+section {
+    margin: 2rem 0;
+}
+
+section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+section p {
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+section ul {
+    padding-left: 1.5rem;
+}
+
+section li {
+    margin-bottom: 0.5rem;
+}
+
+/* =====================================================
+   Oval Cards
+   ===================================================== */
+
+
+oval-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+
+
+.oval-card {
+    border: 3px solid var(--electric-blue);
+    border-radius: 40px;
+    padding: 2rem;
+    text-align: center;
+    background-color: #0f1f3d;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.oval-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(37,99,235,.4);
+}
+
+.oval-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--electric-blue);
+}
+
+/* =====================================================
+   Contact Form
+   ===================================================== */
+
+.contact-form {
+    background-color: #11254d;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 2px solid var(--electric-blue);
+    margin-top: 2rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    margin-bottom: 1rem;
+    background-color: #0f1f3d;
+    color: #ffffff;
+}
+
+.contact-form button {
+    background-color: var(--electric-blue);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* =====================================================
+   Footer
+   ===================================================== */
+
+footer {
+    border-top: 1px solid var(--border-light);
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* =====================================================
+   Mobile
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cta-box {
+        width: 100%;
+        margin-left: 0;
+    }
+}@media (max-width: 900px) {
+    .industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .industries-grid {
+        grid-template-columns: 1fr;
+    }
+}
