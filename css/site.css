@@ -228,7 +228,7 @@ section li {
    ===================================================== */
 
 
-oval-grid {
+.oval-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
@@ -349,5 +349,111 @@ footer {
 @media (max-width: 600px) {
     .industries-grid {
         grid-template-columns: 1fr;
+    }
+}
+.about-intro {
+    max-width: 850px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.leader-card {
+    border: 3px solid var(--electric-blue);
+    border-radius: 50px;
+    background-color: #11254d;
+    padding: 2rem;
+    text-align: center;
+}
+
+.leader-card h2 {
+    margin-top: 1rem;
+    margin-bottom: .25rem;
+}
+
+.leader-card h3 {
+    color: var(--electric-blue);
+    margin-bottom: 1rem;
+}
+
+.leader-card ul {
+    text-align: left;
+    margin-top: .75rem;
+}
+
+.leader-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid var(--electric-blue);
+    margin: 0 auto 1rem auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-muted);
+    font-size: .95rem;
+}
+
+@media (max-width: 900px) {
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+.brand {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+
+.brand-it {
+    color: var(--electric-blue);
+}
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--electric-blue);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #11254d;
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        padding: .75rem 0;
+    }
+
+    header > div,
+    .header-row {
+        flex-wrap: wrap;
     }
 }
