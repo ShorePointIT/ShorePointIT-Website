@@ -47,7 +47,7 @@ footer {
    ===================================================== */
 
 header {
-    border-bottom: 1px solid var(--border-light);
+   
     margin-bottom: 0.1rem;
 }
 
@@ -81,7 +81,7 @@ nav {
 
 nav a {
     font-size: 0.95rem;
-    color: var(--electric-blue);
+    color: #ffffff;
     font-weight: 600;
 }
 
