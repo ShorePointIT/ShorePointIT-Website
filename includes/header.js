@@ -16,7 +16,7 @@ document.write(`
 
     <nav id="mainNav">
       <a href="index.html">Home</a>
-      <a href="managed-services.htmldir *html">Managed Services</a>
+      <a href="managed-services.html>Managed Services</a>
       <a href="index.html#services">Services</a>
       <a href="cybersecurity.html">Cybersecurity</a>
       <a href="about-us.html">About</a>
