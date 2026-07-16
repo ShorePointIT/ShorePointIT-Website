@@ -20,7 +20,7 @@ document.write(`
       <a href="managed-services.html">Managed Services</a>
       <a href="index.html#services">Services</a>
       <a href="cybersecurity.html">Cybersecurity</a>
-      <a href="about-us.html">About</a>
+      <a href="About-us.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="index.html#contact">Contact</a>
       <a href="privacy.html">Privacy</a>
