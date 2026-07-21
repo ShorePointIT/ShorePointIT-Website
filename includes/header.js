@@ -26,5 +26,6 @@ document.write(`
       <a href="privacy.html">Privacy</a>
     </nav>
   </div>
+  
 </header>
 `);
