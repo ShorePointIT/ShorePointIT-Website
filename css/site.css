@@ -510,3 +510,21 @@ body::after {
     object-position: center;
     display: block;
 }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    text-align: center;
+}
+
+.team-card img {
+    width: 275px;
+    height: 275px;
+    object-fit: cover;
+    border-radius: 12px;
+}
