@@ -544,3 +544,48 @@ body::after {
     width: 100%;
     box-shadow: 0 0 12px rgba(37, 99, 235, 0.15);
 }
+/* =====================================================
+   HubSpot Form Text Visibility Fix
+   ===================================================== */
+
+/* Force a dark font color and proper background inside HubSpot inputs */
+.hs-form-frame input[type="text"],
+.hs-form-frame input[type="email"],
+.hs-form-frame input[type="tel"],
+.hs-form-frame textarea,
+.hs-form-frame select {
+    color: #0f1f3d !important; /* Dark Navy text so it stands out */
+    background-color: #ffffff !important; /* Force clean white background */
+    border: 1px solid #cbd5e1 !important; /* Give it a clear border definition */
+}
+
+/* Fix for the placeholder text color */
+.hs-form-frame input::placeholder,
+.hs-form-frame textarea::placeholder {
+    color: #64748b !important;
+}
+
+/* Ensure the Phone Country Dropdown text is visible */
+.hs-form-frame .hs-input select, 
+.hs-form-frame .hs-fieldtype-intl-phone select {
+    color: #0f1f3d !important;
+}
+/* =====================================================
+   HubSpot Container Box Wrapper
+   ===================================================== */
+.form-container-box {
+    background-color: #f8fafc; /* Clean, modern light background */
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 3px solid var(--electric-blue); /* Matches your site accents */
+    margin-top: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Force all text labels inside this white box to be dark navy so they are readable */
+.form-container-box label,
+.form-container-box span,
+.form-container-box h2,
+.form-container-box p {
+    color: #0f1f3d !important; 
+}
