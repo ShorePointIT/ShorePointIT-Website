@@ -493,7 +493,7 @@ body::after {
     pointer-events: none;
     z-index: -1;
 }
-``
+
 }
 .bio-photo {
     width: 250px;

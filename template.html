@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+ShorePointIT Website
+Page: TEMPLATE
+Version: 2.1.0
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PAGE_TITLE | ShorePointIT</title>
+    <meta name="description" content="PAGE_DESCRIPTION" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- ShorePointIT CSS -->
+    <link rel="stylesheet" href="css/site.css" />
+
+    <!-- Analytics Includes -->
+    <script src="includes/analytics.js"></script>
+
+    <!-- Structured Data Include -->
+    <script src="includes/schema.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER INCLUDE -->
+    <script src="includes/header.js"></script>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>HERO_TITLE</h1>
+            <p>
+                HERO_SUBTITLE_OR_DESCRIPTION
+            </p>
+        </section>
+
+        <div class="accent-bar"></div>
+
+        <!-- MAIN SECTION CONTENT -->
+        <section>
+            <h2>SECTION_TITLE</h2>
+            <p>
+                SECTION_BODY_TEXT
+            </p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER INCLUDE -->
+    <script src="includes/footer.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        var menuToggle = document.getElementById('menuToggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                var mainNav = document.getElementById('mainNav');
+                if (mainNav) {
+                    mainNav.classList.toggle('active');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
