@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <!--
 ShorePointIT Website
-Version: 2.1.0
-Page: Home (Executive Visuals)
+Version: 2.2.0
+Page: Home (Executive Visuals & Modern Lead Form)
 -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ShorePointIT | Strategic IT Advisory, Cybersecurity & Cloud Solutions</title>
+  <title>ShorePointIT | Strategic IT Advisory, Cybersecurity &amp; Cloud Solutions</title>
   <meta name="description"
     content="ShorePointIT provides executive-level technology advisory, cybersecurity, cloud architecture, and managed services for growing businesses across NJ, NY, PA, and CT.">
 
@@ -30,30 +30,15 @@ Page: Home (Executive Visuals)
 
   <!-- Schema Include -->
   <script src="includes/schema.js"></script>
-  <!--
-    ========================================================================
-    CLOUDFLARE TURNSTILE
-    
-    Loads the Cloudflare Turnstile anti-bot widget.
-    
-    This script renders the widget and generates a temporary verification
-    token when a legitimate user submits the form.
-    
-    The token is NOT the secret key.
-    
-    The token is validated by Web3Forms using the Turnstile Secret that
-    is stored securely in the Web3Forms dashboard.
-    
-    Without this script, the widget will not appear.
-    ========================================================================
-    -->
-  <script src="https://challenges.cloudflare.0/api.js</script>
 
+  <!-- Cloudflare Turnstile Anti-Bot Script -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
   <!-- Header Include -->
-  <script src= " includes/header.js"></script>
+  <script src="includes/header.js"></script>
+
   <main>
 
     <!-- HERO SECTION WITH VISUAL DASHBOARD -->
@@ -80,7 +65,7 @@ Page: Home (Executive Visuals)
         </div>
       </div>
 
-      <!-- VISUAL DASHBOARD GRAPHIC (NO LOW-QUALITY STOCK PHOTOS) -->
+      <!-- VISUAL DASHBOARD GRAPHIC -->
       <div class="hero-visual">
         <div class="visual-card-wrapper">
           <div class="visual-card-header">
@@ -265,162 +250,61 @@ Page: Home (Executive Visuals)
 
     <div class="accent-bar"></div>
 
-    <!-- CONTACT & AUDIT REQUEST FORM -->
-    <section id="contact">
-      <h2>Schedule a Strategic Technology Review</h2>
-      <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem auto;">
+    <!-- CONTACT & AUDIT REQUEST FORM (MODERN WHITE CARD UI) -->
+    <section id="contact" style="max-width: 600px; margin: 3rem auto;">
+      <h2 style="text-align: center;">Schedule a Strategic Technology Review</h2>
+      <p style="text-align: center; margin-bottom: 2rem;">
         Ready to evaluate your organization's cybersecurity risk and operational efficiency? Request a consultation with
         our senior advisory team.
       </p>
 
-      <div class="contact-form">
+      <div class="modern-form-card">
         <form action="https://api.web3forms.com/submit" method="POST">
 
-          <!--
-          ========================================================================
-          WEB3FORMS ACCESS KEY
-        
-          Public identifier for the ShorePointIT form.
-        
-          This is not confidential and is safe to include in HTML.
-        
-          Web3Forms uses this key to determine where submitted messages should
-          be delivered.
-          ========================================================================
-          -->
+          <!-- Web3Forms Config -->
           <input type="hidden" name="access_key" value="095e9023-bd91-4c89-a911-679292d03235">
-
-
-          <!--
-          ========================================================================
-          EMAIL SOURCE IDENTIFICATION
-        
-          This value appears in the incoming email so you can easily identify
-          that the lead originated from the ShorePointIT website.
-          ========================================================================
-          -->
           <input type="hidden" name="from_name" value="ShorePointIT Website Lead">
-
-
-          <!--
-          ========================================================================
-          REDIRECT PAGE
-        
-          After a successful submission the visitor is redirected to your
-          thank-you page.
-        
-          This improves the user experience and provides a conversion page
-          that can also be tracked with Google Analytics.
-          ========================================================================
-          -->
           <input type="hidden" name="redirect" value="https://shorepointit.com/thank-you.html">
-
-
-          <!--
-          ========================================================================
-          HONEYPOT FIELD
-        
-          Invisible field designed to trap simplistic spambots.
-        
-          Human visitors never see this field.
-        
-          Many automated bots blindly fill every field they discover.
-        
-          When Web3Forms sees a value in this field it automatically treats
-          the submission as spam and rejects it.
-        
-          Extremely effective against low-quality bot traffic.
-          ========================================================================
-          -->
           <input type="checkbox" name="botcheck" style="display:none;">
 
-
-          <!-- ================================================================== -->
-          <!-- COMPANY NAME                                                      -->
-          <!-- ================================================================== -->
-
-          <label>Company Name</label>
-
-          <input type="text" name="company" placeholder="Your Company Name" required>
-
-
-          <!-- ================================================================== -->
-          <!-- CONTACT NAME                                                       -->
-          <!-- ================================================================== -->
-
-          <label>Name</label>
-
-          <input type="text" name="name" required>
-
-
-          <!-- ================================================================== -->
-          <!-- BUSINESS EMAIL                                                     -->
-          <!-- ================================================================== -->
-
-          <label>Email</label>
-
-          <input type="email" name="email" required>
-
-
-          <!-- ================================================================== -->
-          <!-- PHONE NUMBER                                                       -->
-          <!-- ================================================================== -->
-
-          <label>Phone</label>
-
-          <input type="text" name="phone">
-
-
-          <!-- ================================================================== -->
-          <!-- MESSAGE                                                            -->
-          <!-- ================================================================== -->
-
-          <label>Message</label>
-
-          <textarea name="message" rows="5" required></textarea>
-
-
-          <!--
-          ========================================================================
-          CLOUDFLARE TURNSTILE WIDGET
-        
-          ShorePointIT Turnstile Site Key:
-          0x4AAAAAAENQKEGJKMssif2w
-        
-          The SITE KEY is public and belongs in the HTML.
-        
-          The SECRET KEY NEVER belongs in the HTML, JavaScript, GitHub, or
-          source code.
-        
-          The secret should exist ONLY inside the Web3Forms dashboard.
-        
-          When the user submits the form:
-        
-          1. Turnstile verifies the visitor.
-          2. A temporary verification token is generated.
-          3. Web3Forms validates the token using your secret.
-          4. Invalid requests are rejected.
-          5. Valid requests are emailed to ShorePointIT.
-        
-          This blocks the overwhelming majority of automated spam.
-          ========================================================================
-          -->
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAENQKEGJKMssif2w">
+          <div class="form-group">
+            <label for="idx-company">Company Name *</label>
+            <input type="text" id="idx-company" name="company" class="modern-input" placeholder="Your Company Name"
+              required>
           </div>
 
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label for="idx-name">Name *</label>
+              <input type="text" id="idx-name" name="name" class="modern-input" placeholder="John Smith" required>
+            </div>
 
-          <!--
-          ========================================================================
-          SUBMIT BUTTON
-        
-          Turnstile verification occurs before Web3Forms processes the request.
-        
-          If verification fails the submission is rejected.
-          ========================================================================
-          -->
+            <div class="form-group">
+              <label for="idx-phone">Phone</label>
+              <input type="tel" id="idx-phone" name="phone" class="modern-input" placeholder="(555) 000-0000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="idx-email">Email *</label>
+            <input type="email" id="idx-email" name="email" class="modern-input" placeholder="john@company.com"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="idx-message">Message *</label>
+            <textarea id="idx-message" name="message" class="modern-input" rows="4"
+              placeholder="How can we help your business?" required style="resize: vertical;"></textarea>
+          </div>
+
+          <!-- Cloudflare Turnstile Anti-Bot Widget -->
+          <div class="turnstile-wrapper">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAENQKEGJKMssif2w"></div>
+          </div>
+
           <input type="hidden" name="subject" value="New ShorePointIT Website Lead">
-          <button type="submit">
-            Send Message
+          <button type="submit" class="btn-modern-submit">
+            Send Message →
           </button>
 
         </form>
@@ -445,8 +329,6 @@ Page: Home (Executive Visuals)
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJ8XN4M" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- Put this right above </body> at the bottom of index.html -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  </body>
+</body>
 
 </html>

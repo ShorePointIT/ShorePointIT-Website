@@ -1,12 +1,16 @@
 /* =====================================================
-   ShorePointIT Shared Site Styles
+   ShorePointIT Shared Site & Landing Page Styles
    ===================================================== */
 
 :root {
     --navy: #0f1f3d;
+    --navy-light: #11254d;
     --electric-blue: #2563eb;
+    --electric-blue-hover: #1d4ed8;
     --text-main: #ffffff;
     --text-muted: #d1d5db;
+    --text-dark: #0f1f3d;
+    --text-slate: #475569;
     --border-light: #334155;
     --bg-light: #0f1f3d;
 }
@@ -22,11 +26,37 @@ html {
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                 "Segoe UI", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: var(--text-main);
     background-color: var(--bg-light);
     line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Ambient Glows */
+body::before {
+    content: "";
+    position: fixed;
+    top: -250px;
+    left: -250px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: -250px;
+    right: -250px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 a {
@@ -43,11 +73,10 @@ footer {
 }
 
 /* =====================================================
-   Header
+   Header & Navigation
    ===================================================== */
 
 header {
-   
     margin-bottom: 0.1rem;
 }
 
@@ -56,6 +85,11 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+}
+
+.brand-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .brand {
@@ -77,12 +111,27 @@ nav {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    align-items: center;
 }
 
 nav a {
     font-size: 0.95rem;
     color: #ffffff;
     font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--electric-blue);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--electric-blue);
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 /* =====================================================
@@ -98,29 +147,33 @@ nav a {
 }
 
 /* =====================================================
-   Hero
+   Hero Layout
    ===================================================== */
 
 .hero {
     position: relative;
-    padding: 5rem 3rem;
+    padding: 3.5rem 2.5rem;
     border-radius: 12px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(15,31,61,.92) 0%,
-            rgba(15,31,61,.82) 40%,
-            rgba(15,31,61,.55) 100%
-        ),
-        url("../images/hero-tablet.jpg");
-
+    background: linear-gradient(
+        90deg,
+        rgba(15, 31, 61, 0.92) 0%,
+        rgba(15, 31, 61, 0.82) 40%,
+        rgba(15, 31, 61, 0.55) 100%
+    );
     background-size: cover;
     background-position: center;
 }
 
+.hero-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
 .hero h1 {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
+    line-height: 1.2;
     margin-bottom: 0.75rem;
 }
 
@@ -139,7 +192,7 @@ nav a {
 }
 
 /* =====================================================
-   Buttons
+   Buttons & Callouts
    ===================================================== */
 
 .btn-primary,
@@ -150,11 +203,17 @@ nav a {
     font-size: 0.95rem;
     font-weight: 600;
     display: inline-block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-primary {
     background-color: var(--electric-blue);
     color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--electric-blue-hover);
+    transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -163,41 +222,174 @@ nav a {
     background-color: transparent;
 }
 
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .call-btn {
     background-color: var(--electric-blue);
     color: #ffffff;
     white-space: nowrap;
 }
 
-/* =====================================================
-   CTA Box
-   ===================================================== */
-
 .cta-box {
-    background-color: #11254d;
+    background-color: var(--navy-light);
     border: 2px solid var(--electric-blue);
     border-radius: 20px;
     padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-left: auto;
 }
 
 .cta-box h3 {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .cta-box p {
-    margin: 0.25rem 0 0;
-    font-size: 1.55rem;
+    margin: 0.1rem 0 0;
+    font-size: 1.4rem;
     font-weight: 800;
     color: #ffffff;
 }
 
 /* =====================================================
-   Sections
+   COMPACT MODERN LEAD FORM
+   ===================================================== */
+
+.modern-form-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem 1.5rem 1.25rem 1.5rem;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-dark);
+}
+
+.modern-form-card h2 {
+    color: var(--text-dark) !important;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+    text-align: center;
+}
+
+.modern-form-card p {
+    color: var(--text-slate) !important;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* 2-Column Responsive Form Grid */
+.form-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.form-group {
+    margin-bottom: 0.75rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1e293b !important;
+    margin-bottom: 0.25rem;
+}
+
+/* Form Input Focus Effects */
+.modern-input {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    background-color: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+.modern-input::placeholder {
+    color: #94a3b8;
+}
+
+.modern-input:focus {
+    background-color: #ffffff;
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Submit Button */
+.btn-modern-submit {
+    width: 100%;
+    background-color: var(--electric-blue);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    margin-top: 0.25rem;
+}
+
+.btn-modern-submit:hover {
+    background-color: var(--electric-blue-hover);
+    transform: translateY(-1px);
+}
+
+.btn-modern-submit:active {
+    transform: translateY(0);
+}
+
+/* Cloudflare Turnstile Centering */
+.turnstile-wrapper {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* =====================================================
+   Credibility Bar
+   ===================================================== */
+
+.proof-bar {
+    background-color: var(--navy-light);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
+
+.proof-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.proof-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* =====================================================
+   Cards & Grids (Industry & Features)
    ===================================================== */
 
 section {
@@ -215,93 +407,38 @@ section p {
     margin-bottom: 0.75rem;
 }
 
-section ul {
-    padding-left: 1.5rem;
-}
-
-section li {
-    margin-bottom: 0.5rem;
-}
-
-/* =====================================================
-   Oval Cards
-   ===================================================== */
-
-
-.oval-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-
 .industries-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
-
-
 .oval-card {
-    border: 3px solid var(--electric-blue);
-    border-radius: 40px;
-    padding: 2rem;
-    text-align: center;
-    background-color: #0f1f3d;
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
+    border: 2px solid var(--electric-blue);
+    border-radius: 24px;
+    padding: 1.5rem;
+    background-color: var(--navy);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .oval-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 20px rgba(37,99,235,.4);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+.oval-card img {
+    transition: transform 0.3s ease;
+}
+
+.oval-card:hover img {
+    transform: scale(1.03);
 }
 
 .oval-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
     color: var(--electric-blue);
-}
-
-/* =====================================================
-   Contact Form
-   ===================================================== */
-
-.contact-form {
-    background-color: #11254d;
-    padding: 2rem;
-    border-radius: 20px;
-    border: 2px solid var(--electric-blue);
-    margin-top: 2rem;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 10px;
-    border: 1px solid var(--border-light);
-    margin-bottom: 1rem;
-    background-color: #0f1f3d;
-    color: #ffffff;
-}
-
-.contact-form button {
-    background-color: var(--electric-blue);
-    color: #ffffff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 999px;
-    font-size: 1rem;
-    cursor: pointer;
 }
 
 /* =====================================================
@@ -314,7 +451,6 @@ footer {
     padding-top: 1.25rem;
     font-size: 0.9rem;
     color: var(--text-muted);
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -322,113 +458,20 @@ footer {
 }
 
 /* =====================================================
-   Mobile
+   Responsive Media Queries
    ===================================================== */
 
-@media (max-width: 768px) {
-
-    .header-row {
-        flex-direction: column;
-        align-items: flex-start;
+@media (max-width: 900px) {
+    .hero-grid-layout {
+        grid-template-columns: 1fr;
     }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .cta-box {
-        width: 100%;
-        margin-left: 0;
-    }
-}@media (max-width: 900px) {
     .industries-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 600px) {
-    .industries-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.about-intro {
-    max-width: 850px;
-    margin: 0 auto 2rem auto;
-    text-align: center;
-}
-
-.leadership-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.leader-card {
-    border: 3px solid var(--electric-blue);
-    border-radius: 50px;
-    background-color: #11254d;
-    padding: 2rem;
-    text-align: center;
-}
-
-.leader-card h2 {
-    margin-top: 1rem;
-    margin-bottom: .25rem;
-}
-
-.leader-card h3 {
-    color: var(--electric-blue);
-    margin-bottom: 1rem;
-}
-
-.leader-card ul {
-    text-align: left;
-    margin-top: .75rem;
-}
-
-.leader-photo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 3px solid var(--electric-blue);
-    margin: 0 auto 1rem auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: var(--text-muted);
-    font-size: .95rem;
-}
-
-@media (max-width: 900px) {
-
-    .leadership-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-.brand {
-    font-weight: 700;
-    font-size: 1.6rem;
-    color: #ffffff;
-}
-
-.brand-it {
-    color: var(--electric-blue);
-}
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--electric-blue);
-    font-size: 2rem;
-    cursor: pointer;
-}
-
 @media (max-width: 768px) {
-
     .menu-toggle {
         display: block;
     }
@@ -437,7 +480,7 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: #11254d;
+        background: var(--navy-light);
         border: 1px solid var(--border-light);
         border-radius: 12px;
         padding: 1rem;
@@ -449,143 +492,106 @@ footer {
     }
 
     nav a {
-        padding: .75rem 0;
+        padding: 0.5rem 0;
     }
 
-    header > div,
     .header-row {
         flex-wrap: wrap;
     }
-    body::before {
-    content: "";
-    position: fixed;
-    top: -250px;
-    left: -250px;
 
-    width: 500px;
-    height: 500px;
+    .hero h1 {
+        font-size: 1.8rem;
+    }
 
-    background: radial-gradient(
-        circle,
-        rgba(37,99,235,.15) 0%,
-        transparent 70%
-    );
-
-    pointer-events: none;
-    z-index: -1;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    bottom: -250px;
-    right: -250px;
-
-    width: 500px;
-    height: 500px;
-
-    background: radial-gradient(
-        circle,
-        rgba(37,99,235,.12) 0%,
-        transparent 70%
-    );
-
-    pointer-events: none;
-    z-index: -1;
-}
-
-}
-.bio-photo {
-    width: 250px;
-    min-width: 250px;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 16px;
-}
-
-.bio-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-@media (max-width: 768px) {
-    .team-grid {
-        grid-template-columns: 1fr;
+    .cta-box {
+        width: 100%;
     }
 }
 
-.team-card {
-    width: 100%;
-}
-
-.team-card img {
-    width: 100%;
-    max-width: 250px;
-    height: 250px;
-    object-fit: cover;
-}
-.team-card {
-    text-align: center;
-}
-.bio-box {
-    border: 3px solid var(--electric-blue);
-    border-radius: 25px;
-    background-color: rgba(17, 37, 77, 0.6);
-    padding: 1.5rem;
-    margin-top: 1rem;
-    width: 100%;
-    box-shadow: 0 0 12px rgba(37, 99, 235, 0.15);
-}
-/* =====================================================
-   HubSpot Form Text Visibility Fix
+@media (max-width: 600px) {
+    .industries-grid {
+        grid-template-columns: 1fr;
+    }
+    /* =====================================================
+   Index Page Contact Form Styles
    ===================================================== */
 
-/* Force a dark font color and proper background inside HubSpot inputs */
-.hs-form-frame input[type="text"],
-.hs-form-frame input[type="email"],
-.hs-form-frame input[type="tel"],
-.hs-form-frame textarea,
-.hs-form-frame select {
-    color: #0f1f3d !important; /* Dark Navy text so it stands out */
-    background-color: #ffffff !important; /* Force clean white background */
-    border: 1px solid #cbd5e1 !important; /* Give it a clear border definition */
-}
-
-/* Fix for the placeholder text color */
-.hs-form-frame input::placeholder,
-.hs-form-frame textarea::placeholder {
-    color: #64748b !important;
-}
-
-/* Ensure the Phone Country Dropdown text is visible */
-.hs-form-frame .hs-input select, 
-.hs-form-frame .hs-fieldtype-intl-phone select {
-    color: #0f1f3d !important;
-}
-/* =====================================================
-   HubSpot Container Box Wrapper
+./* =====================================================
+   Index Page Contact Form Styles (Fixed Contrast)
    ===================================================== */
-.form-container-box {
-    background-color: #f8fafc; /* Clean, modern light background */
+   /* =====================================================
+   Index Page Contact Form Styles (Fixed Contrast)
+   ===================================================== */
+
+.contact-form {
+    background-color: #11254d;
     padding: 2.5rem;
     border-radius: 20px;
-    border: 3px solid var(--electric-blue); /* Matches your site accents */
-    margin-top: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 2px solid #2563eb;
+    max-width: 650px;
+    margin: 2rem auto 0 auto;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
 }
 
-/* Force all text labels inside this white box to be dark navy so they are readable */
-.form-container-box label,
-.form-container-box span,
-.form-container-box h2,
-.form-container-box p {
-    color: #0f1f3d !important; 
+.contact-form .form-group {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+/* Force high-visibility white labels */
+.contact-form label {
+    display: block !important;
+    margin-bottom: 0.4rem !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    color: #ffffff !important; /* Fixed dark contrast issue */
+    letter-spacing: 0.01em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #3b82f6; /* Brighter initial border for better visibility */
+    background-color: #0b172e;
+    color: #ffffff !important;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+    background-color: #0f1f3d;
+}
+
+.contact-form button[type="submit"] {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 0.9rem 1.75rem;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
 }
