@@ -7,13 +7,20 @@
     --navy-light: #11254d;
     --electric-blue: #2563eb;
     --electric-blue-hover: #1d4ed8;
+
     --text-main: #ffffff;
     --text-muted: #d1d5db;
     --text-dark: #0f1f3d;
     --text-slate: #475569;
+
     --border-light: #334155;
     --bg-light: #0f1f3d;
 }
+
+
+/* =====================================================
+   Global Reset
+   ===================================================== */
 
 * {
     margin: 0;
@@ -34,7 +41,20 @@ body {
     overflow-x: hidden;
 }
 
-/* Background Ambient Glows */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =====================================================
+   Background Ambient Glows
+   ===================================================== */
+
 body::before {
     content: "";
     position: fixed;
@@ -42,7 +62,14 @@ body::before {
     left: -250px;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.15) 0%,
+            transparent 70%
+        );
+
     pointer-events: none;
     z-index: -1;
 }
@@ -54,15 +81,22 @@ body::after {
     right: -250px;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.12) 0%,
+            transparent 70%
+        );
+
     pointer-events: none;
     z-index: -1;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+
+/* =====================================================
+   Main Site Width
+   ===================================================== */
 
 header,
 main,
@@ -71,6 +105,7 @@ footer {
     margin: 0 auto;
     padding: 1.1rem;
 }
+
 
 /* =====================================================
    Header & Navigation
@@ -118,11 +153,22 @@ nav a {
     font-size: 0.95rem;
     color: #ffffff;
     font-weight: 600;
-    transition: color 0.2s ease;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
 }
 
 nav a:hover {
     color: var(--electric-blue);
+}
+
+.nav-highlight {
+    color: #ffffff;
+}
+
+.nav-cta {
+    color: #ffffff;
 }
 
 .menu-toggle {
@@ -133,6 +179,7 @@ nav a:hover {
     font-size: 2rem;
     cursor: pointer;
 }
+
 
 /* =====================================================
    Accent Line
@@ -146,6 +193,27 @@ nav a:hover {
     margin: 1.25rem 0;
 }
 
+
+/* =====================================================
+   General Sections
+   ===================================================== */
+
+section {
+    margin: 2rem 0;
+}
+
+section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+section p {
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+
 /* =====================================================
    Hero Layout
    ===================================================== */
@@ -154,12 +222,15 @@ nav a:hover {
     position: relative;
     padding: 3.5rem 2.5rem;
     border-radius: 12px;
-    background: linear-gradient(
-        90deg,
-        rgba(15, 31, 61, 0.92) 0%,
-        rgba(15, 31, 61, 0.82) 40%,
-        rgba(15, 31, 61, 0.55) 100%
-    );
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15, 31, 61, 0.92) 0%,
+            rgba(15, 31, 61, 0.82) 40%,
+            rgba(15, 31, 61, 0.55) 100%
+        );
+
     background-size: cover;
     background-position: center;
 }
@@ -184,6 +255,33 @@ nav a:hover {
     max-width: 720px;
 }
 
+
+/* =====================================================
+   About Page Hero
+   ===================================================== */
+
+.hero-page {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+}
+
+.hero-page h1 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.about-intro {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =====================================================
+   Button Groups
+   ===================================================== */
+
 .btn-group {
     display: flex;
     flex-wrap: wrap;
@@ -191,8 +289,9 @@ nav a:hover {
     align-items: center;
 }
 
+
 /* =====================================================
-   Buttons & Callouts
+   Buttons
    ===================================================== */
 
 .btn-primary,
@@ -203,7 +302,10 @@ nav a:hover {
     font-size: 0.95rem;
     font-weight: 600;
     display: inline-block;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .btn-primary {
@@ -232,11 +334,17 @@ nav a:hover {
     white-space: nowrap;
 }
 
+
+/* =====================================================
+   CTA Box
+   ===================================================== */
+
 .cta-box {
     background-color: var(--navy-light);
     border: 2px solid var(--electric-blue);
     border-radius: 20px;
     padding: 1rem 1.5rem;
+
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -254,15 +362,19 @@ nav a:hover {
     color: #ffffff;
 }
 
+
 /* =====================================================
-   COMPACT MODERN LEAD FORM
+   Compact Modern Lead Form
    ===================================================== */
 
 .modern-form-card {
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 1.5rem 1.5rem 1.25rem 1.5rem;
-    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
+    padding: 1.5rem 1.5rem 1.25rem;
+
+    box-shadow:
+        0 20px 35px -10px rgba(0, 0, 0, 0.4);
+
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-dark);
 }
@@ -284,7 +396,11 @@ nav a:hover {
     text-align: center;
 }
 
-/* 2-Column Responsive Form Grid */
+
+/* =====================================================
+   Form Grid
+   ===================================================== */
+
 .form-grid-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -304,18 +420,28 @@ nav a:hover {
     margin-bottom: 0.25rem;
 }
 
-/* Form Input Focus Effects */
+
+/* =====================================================
+   Modern Form Inputs
+   ===================================================== */
+
 .modern-input {
     width: 100%;
     padding: 0.55rem 0.75rem;
     font-size: 0.88rem;
+
     color: var(--text-dark);
     background-color: #f8fafc;
+
     border: 1.5px solid #cbd5e1;
     border-radius: 8px;
+
     outline: none;
-    transition: all 0.2s ease-in-out;
-    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .modern-input::placeholder {
@@ -325,23 +451,40 @@ nav a:hover {
 .modern-input:focus {
     background-color: #ffffff;
     border-color: var(--electric-blue);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-/* Submit Button */
+
+/* =====================================================
+   Modern Submit Button
+   ===================================================== */
+
 .btn-modern-submit {
     width: 100%;
+
     background-color: var(--electric-blue);
     color: #ffffff;
+
     font-size: 0.95rem;
     font-weight: 700;
+
     padding: 0.75rem;
+
     border: none;
     border-radius: 8px;
+
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+
     margin-top: 0.25rem;
+
+    box-shadow:
+        0 4px 12px rgba(37, 99, 235, 0.3);
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
 }
 
 .btn-modern-submit:hover {
@@ -353,12 +496,17 @@ nav a:hover {
     transform: translateY(0);
 }
 
-/* Cloudflare Turnstile Centering */
+
+/* =====================================================
+   Cloudflare Turnstile
+   ===================================================== */
+
 .turnstile-wrapper {
     margin: 0.5rem 0;
     display: flex;
     justify-content: center;
 }
+
 
 /* =====================================================
    Credibility Bar
@@ -388,24 +536,10 @@ nav a:hover {
     font-size: 0.95rem;
 }
 
+
 /* =====================================================
-   Cards & Grids (Industry & Features)
+   Industry & Feature Cards
    ===================================================== */
-
-section {
-    margin: 2rem 0;
-}
-
-section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 0.75rem;
-    color: #ffffff;
-}
-
-section p {
-    color: var(--text-muted);
-    margin-bottom: 0.75rem;
-}
 
 .industries-grid {
     display: grid;
@@ -417,14 +551,21 @@ section p {
 .oval-card {
     border: 2px solid var(--electric-blue);
     border-radius: 24px;
+
     padding: 1.5rem;
+
     background-color: var(--navy);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .oval-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+
+    box-shadow:
+        0 0 20px rgba(37, 99, 235, 0.3);
 }
 
 .oval-card img {
@@ -441,96 +582,158 @@ section p {
     color: var(--electric-blue);
 }
 
+
 /* =====================================================
-   Footer
+   ABOUT US - Leadership Team
    ===================================================== */
 
-footer {
-    border-top: 1px solid var(--border-light);
-    margin-top: 2rem;
-    padding-top: 1.25rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
+.team-grid {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr)) !important;
+
+    gap: 18px !important;
+
+    width: 100% !important;
+    margin-top: 1.5rem;
+
+    align-items: stretch !important;
+}
+
+.team-card {
+    display: flex !important;
+    flex-direction: column !important;
+
+    min-width: 0 !important;
+    height: 100% !important;
+
+    padding: 14px !important;
+
+    text-align: center;
+
+    background-color: var(--navy-light);
+
+    border:
+        2px solid var(--electric-blue);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   Leadership Photos
+   ===================================================== */
+
+.team-card img {
+    width: 220px !important;
+    height: 245px !important;
+
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    object-fit: cover !important;
+    object-position: center top !important;
+
+    display: block !important;
+
+    margin:
+        0 auto 18px auto !important;
+
+    border-radius: 14px;
+}
+
+
+/* =====================================================
+   Leadership Names
+   ===================================================== */
+
+.team-card h3 {
+    min-height: 40px;
+
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        0 0 0.35rem 0 !important;
+
+    font-size: 1.22rem;
+    line-height: 1.2;
+
+    color: #ffffff;
 }
+
 
 /* =====================================================
-   Responsive Media Queries
+   Leadership Titles
    ===================================================== */
 
-@media (max-width: 900px) {
-    .hero-grid-layout {
-        grid-template-columns: 1fr;
-    }
+.team-title {
+    min-height: 58px;
 
-    .industries-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin:
+        0 0 1rem 0 !important;
+
+    font-size: 0.96rem;
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    color: #ffffff !important;
 }
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
 
-    nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: var(--navy-light);
-        border: 1px solid var(--border-light);
-        border-radius: 12px;
-        padding: 1rem;
-        margin-top: 1rem;
-    }
+/* =====================================================
+   Leadership Bios
+   ===================================================== */
 
-    nav.active {
-        display: flex;
-    }
+.bio-box {
+    flex: 1;
 
-    nav a {
-        padding: 0.5rem 0;
-    }
+    padding: 1rem;
 
-    .header-row {
-        flex-wrap: wrap;
-    }
+    text-align: left;
 
-    .hero h1 {
-        font-size: 1.8rem;
-    }
+    background:
+        rgba(255, 255, 255, 0.03);
 
-    .cta-box {
-        width: 100%;
-    }
+    border-radius: 12px;
 }
 
-@media (max-width: 600px) {
-    .industries-grid {
-        grid-template-columns: 1fr;
-    }
-    /* =====================================================
-   Index Page Contact Form Styles
-   ===================================================== */
+.bio-box p {
+    margin: 0;
+    width: 100%;
+}
 
-./* =====================================================
-   Index Page Contact Form Styles (Fixed Contrast)
-   ===================================================== */
-   /* =====================================================
-   Index Page Contact Form Styles (Fixed Contrast)
+
+/* =====================================================
+   Index Page Contact Form
    ===================================================== */
 
 .contact-form {
     background-color: #11254d;
+
     padding: 2.5rem;
+
     border-radius: 20px;
-    border: 2px solid #2563eb;
+
+    border:
+        2px solid #2563eb;
+
     max-width: 650px;
-    margin: 2rem auto 0 auto;
-    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
+
+    margin:
+        2rem auto 0 auto;
+
+    box-shadow:
+        0 20px 35px -10px rgba(0, 0, 0, 0.4);
 }
 
 .contact-form .form-group {
@@ -538,60 +741,304 @@ footer {
     text-align: left;
 }
 
-/* Force high-visibility white labels */
 .contact-form label {
     display: block !important;
-    margin-bottom: 0.4rem !important;
-    font-weight: 700 !important;
-    font-size: 0.95rem !important;
-    color: #ffffff !important; /* Fixed dark contrast issue */
-    letter-spacing: 0.01em;
+
+    margin-bottom:
+        0.4rem !important;
+
+    font-weight:
+        700 !important;
+
+    font-size:
+        0.95rem !important;
+
+    color:
+        #ffffff !important;
+
+    letter-spacing:
+        0.01em;
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
+.contact-form input[type="tel"],
 .contact-form textarea {
     width: 100%;
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    border: 1.5px solid #3b82f6; /* Brighter initial border for better visibility */
-    background-color: #0b172e;
-    color: #ffffff !important;
-    font-size: 0.95rem;
-    box-sizing: border-box;
-    transition: all 0.2s ease-in-out;
+
+    padding:
+        0.8rem 1rem;
+
+    border-radius:
+        8px;
+
+    border:
+        1.5px solid #3b82f6;
+
+    background-color:
+        #0b172e;
+
+    color:
+        #ffffff !important;
+
+    font-size:
+        0.95rem;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #94a3b8 !important;
+    color:
+        #94a3b8 !important;
 }
 
 .contact-form input[type="text"]:focus,
 .contact-form input[type="email"]:focus,
+.contact-form input[type="tel"]:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
-    background-color: #0f1f3d;
+
+    border-color:
+        #60a5fa;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(59, 130, 246, 0.25);
+
+    background-color:
+        #0f1f3d;
 }
 
 .contact-form button[type="submit"] {
-    background-color: #2563eb;
-    color: #ffffff;
-    border: none;
-    padding: 0.9rem 1.75rem;
-    border-radius: 8px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 1rem;
-    width: 100%;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    background-color:
+        #2563eb;
+
+    color:
+        #ffffff;
+
+    border:
+        none;
+
+    padding:
+        0.9rem 1.75rem;
+
+    border-radius:
+        8px;
+
+    font-size:
+        1.05rem;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    margin-top:
+        1rem;
+
+    width:
+        100%;
+
+    box-shadow:
+        0 4px 12px rgba(37, 99, 235, 0.4);
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
 }
 
 .contact-form button[type="submit"]:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-1px);
+    background-color:
+        #1d4ed8;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =====================================================
+   Footer
+   ===================================================== */
+
+footer {
+    border-top:
+        1px solid var(--border-light);
+
+    margin-top:
+        2rem;
+
+    padding-top:
+        1.25rem;
+
+    font-size:
+        0.9rem;
+
+    color:
+        var(--text-muted);
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        space-between;
+
+    gap:
+        1rem;
+}
+
+
+/* =====================================================
+   Responsive - Tablets
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .hero-grid-layout {
+        grid-template-columns:
+            1fr;
+    }
+
+    .industries-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .team-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .team-card img {
+        width:
+            250px !important;
+
+        height:
+            270px !important;
+    }
+}
+
+
+/* =====================================================
+   Responsive - Navigation
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display:
+            block;
+    }
+
+    nav {
+        display:
+            none;
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+
+        background:
+            var(--navy-light);
+
+        border:
+            1px solid var(--border-light);
+
+        border-radius:
+            12px;
+
+        padding:
+            1rem;
+
+        margin-top:
+            1rem;
+    }
+
+    nav.active {
+        display:
+            flex;
+    }
+
+    nav a {
+        padding:
+            0.5rem 0;
+    }
+
+    .header-row {
+        flex-wrap:
+            wrap;
+    }
+
+    .hero h1 {
+        font-size:
+            1.8rem;
+    }
+
+    .hero-page h1 {
+        font-size:
+            1.8rem;
+    }
+
+    .cta-box {
+        width:
+            100%;
+    }
+
+    .form-grid-2col {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+/* =====================================================
+   Responsive - Phones
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .industries-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .team-grid {
+        grid-template-columns:
+            1fr !important;
+    }
+
+    .team-card {
+        padding:
+            1.25rem !important;
+    }
+
+    .team-card img {
+        width:
+            280px !important;
+
+        height:
+            300px !important;
+
+        max-width:
+            100% !important;
+    }
+
+    .team-title {
+        min-height:
+            auto;
+    }
+
+    .contact-form {
+        padding:
+            1.5rem;
+    }
 }
