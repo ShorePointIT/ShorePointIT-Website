@@ -18,7 +18,7 @@ document.write(`
   
       <nav id="mainNav">
       <a href="/index.html">Home</a>
-      <a href="/about-us.html">About Us</a>
+      <a href="/aboutus.html">About Us</a>
       <a href="/managed-services.html">Managed Services</a>
       <a href="/cybersecurity.html">Cybersecurity</a>
       <a href="/faq.html">FAQ</a>
