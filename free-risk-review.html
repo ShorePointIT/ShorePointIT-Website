@@ -1,12 +1,20 @@
+```html
 <!DOCTYPE html>
-<!--ShorePointIT WebsiteVersion: 1.0.1Last Updated: 2026-07-10Page: Home-->
+<!--
+ShorePointIT Website
+Page: Free Risk Assessment
+-->
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About Us | ShorePointIT</title>
-    <meta name="description" content="Meet the leadership team at ShorePointIT LLC." />
+
+    <title>Free Risk Assessment | ShorePointIT</title>
+
+    <meta name="description"
+        content="Request a complimentary ShorePointIT Operational Efficiency and Cyber Risk Assessment." />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -14,131 +22,527 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
 
     <!-- ShorePointIT CSS -->
     <link rel="stylesheet" href="css/site.css" />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    <!-- Google tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TNV38K77GR"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
         gtag('config', 'G-TNV38K77GR');
     </script>
+
+    <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+
         })(window, document, "clarity", "script", "xmm7xh1mbg");
     </script>
 
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start': new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+
+            w[l] = w[l] || [];
+
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+
+            j.async = true;
+
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+
+            f.parentNode.insertBefore(j, f);
+
         })(window, document, 'script', 'dataLayer', 'GTM-WRJ8XN4M');
     </script>
-    <!-- End Google Tag Manager -->
-    <script src="includes/header.js"></script>
+
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
+
+    <!-- Google Tag Manager noscript -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJ8XN4M" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
+            style="display:none;visibility:hidden">
+        </iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <script src="includes/header.js"></script>
+
 
     <main>
-        <section class="hero">
-            <h1>Uncover Hidden Operational Inefficiencies and Cyber Risk</h1>
-            <p>Many organizations unknowingly waste thousands of dollars each year through technology inefficiencies,
-                redundant spending, security gaps, and operational bottlenecks.</p>
-            <p>ShorePoint<span class="brand-it">IT</span> is offering a Complimentary Operational Efficiency & Cyber
-                Risk Assessment for qualified organizations with 20 to 100 employees.</p>
+
+        <!-- =====================================================
+             HERO + FORM
+             ===================================================== -->
+
+        <section class="hero hero-grid-layout" id="assessment-form">
+
+            <!-- Left Side -->
+            <div class="hero-content">
+
+                <h1>
+                    Uncover Hidden Operational Inefficiencies and Cyber Risk
+                </h1>
+
+                <p>
+                    Many organizations unknowingly waste thousands of dollars each year
+                    through technology inefficiencies, redundant spending, security gaps,
+                    and operational bottlenecks.
+                </p>
+
+                <p>
+                    ShorePoint<span class="brand-it">IT</span> is offering a
+                    <strong>Complimentary Operational Efficiency &amp; Cyber Risk Assessment</strong>
+                    designed to identify opportunities to reduce risk, improve productivity,
+                    and get more value from your technology investments.
+                </p>
+
+                <div class="cta-box" style="margin-top:1.5rem;width:100%;">
+
+                    <div>
+
+                        <h3>
+                            Prefer to Speak With Us?
+                        </h3>
+
+                        <p>
+                            855-574-6737
+                        </p>
+
+                    </div>
+
+                    <a href="tel:8555746737" class="call-btn">
+
+                        Call Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Side Form -->
+            <div class="hero-visual">
+
+                <div class="modern-form-card">
+
+                    <h2>
+                        Request Your Complimentary Assessment
+                    </h2>
+
+                    <p>
+                        Tell us a little about your organization and we will contact you
+                        to schedule your assessment.
+                    </p>
+
+
+                    <form action="https://api.web3forms.com/submit" method="POST">
+
+
+                        <!-- Web3Forms Configuration -->
+
+                        <input type="hidden" name="access_key" value="095e9023-bd91-4c89-a911-679292d03235">
+
+
+                        <input type="hidden" name="from_name" value="ShorePointIT Free Risk Assessment">
+
+
+                        <input type="hidden" name="redirect" value="https://shorepointit.com/thank-you.html">
+
+
+                        <input type="hidden" name="subject"
+                            value="New ShorePointIT Complimentary Risk Assessment Request">
+
+
+                        <input type="checkbox" name="botcheck" style="display:none;">
+
+
+                        <!-- Company & Name -->
+
+                        <div class="form-grid-2col">
+
+                            <div class="form-group">
+
+                                <label for="company">
+                                    Company *
+                                </label>
+
+                                <input type="text" id="company" name="company" class="modern-input"
+                                    placeholder="Company Name" required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Your Name *
+                                </label>
+
+                                <input type="text" id="name" name="name" class="modern-input" placeholder="John Smith"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Email & Phone -->
+
+                        <div class="form-grid-2col">
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email *
+                                </label>
+
+                                <input type="email" id="email" name="email" class="modern-input"
+                                    placeholder="john@company.com" required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone
+                                </label>
+
+                                <input type="tel" id="phone" name="phone" class="modern-input"
+                                    placeholder="(555) 000-0000">
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Cloudflare Turnstile -->
+
+                        <div class="turnstile-wrapper">
+
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAENQKEGJKMssif2w">
+                            </div>
+
+                        </div>
+
+
+                        <!-- Submit Button -->
+
+                        <button type="submit" class="btn-modern-submit">
+
+                            Request Complimentary Assessment →
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
         </section>
 
+
         <div class="accent-bar"></div>
+
+
+        <!-- =====================================================
+             ASSESSMENT AREAS
+             ===================================================== -->
 
         <section>
-            <h2>What The Assessment Uncovers</h2>
-            <div class="industries-grid">
+
+            <h2>
+                What the Assessment Uncovers
+            </h2>
+
+            <p style="max-width:800px;margin-bottom:1.5rem;">
+                We look beyond individual technology problems to identify risks,
+                inefficiencies, and opportunities across your overall technology environment.
+            </p>
+
+
+            <div class="industries-grid" style="grid-template-columns:repeat(3,1fr);">
+
+
                 <div class="oval-card">
-                    <h3>Financial & Infrastructure Waste</h3>
-                    <p>Identify unnecessary spending, redundant applications, underutilized services, and operational
-                        costs that reduce profitability.</p>
+
+                    <h3>
+                        Financial &amp; Infrastructure Waste
+                    </h3>
+
+                    <p>
+                        Identify unnecessary spending, redundant applications,
+                        underutilized services, and operational costs that may
+                        be reducing profitability.
+                    </p>
+
                 </div>
+
+
                 <div class="oval-card">
-                    <h3>Productivity Bottlenecks</h3>
-                    <p>Discover workflow inefficiencies, slow processes, disconnected systems, and information silos
-                        that reduce employee productivity.</p>
+
+                    <h3>
+                        Productivity Bottlenecks
+                    </h3>
+
+                    <p>
+                        Discover workflow inefficiencies, slow processes,
+                        disconnected systems, and information silos that can
+                        reduce employee productivity.
+                    </p>
+
                 </div>
+
+
                 <div class="oval-card">
-                    <h3>Cybersecurity & Compliance Risk</h3>
-                    <p>Evaluate security gaps, operational vulnerabilities, compliance concerns, and areas that may
-                        impact cyber insurance requirements.</p>
+
+                    <h3>
+                        Cybersecurity &amp; Compliance Risk
+                    </h3>
+
+                    <p>
+                        Evaluate security gaps, operational vulnerabilities,
+                        compliance concerns, backup risks, and areas that may
+                        affect cyber insurance requirements.
+                    </p>
+
                 </div>
+
             </div>
+
         </section>
 
+
         <div class="accent-bar"></div>
+
+
+        <!-- =====================================================
+             SHOREPOINTIT ADVANTAGE
+             ===================================================== -->
 
         <section>
-            <h2>The ShorePointIT Advantage</h2>
-            <p>ShorePointIT combines expertise in cybersecurity, operational efficiency, project execution, business
-                intelligence, and technology leadership. Unlike traditional IT providers, our approach focuses on
-                business outcomes first—improving efficiency, reducing risk, and ensuring technology investments support
-                organizational goals.</p>
-            <p>Our assessments leverage decades of enterprise experience and a network of highly experienced technology
-                specialists to deliver practical recommendations that executives can act on immediately.</p>
+
+            <h2>
+                The ShorePointIT Advantage
+            </h2>
+
+            <p>
+                ShorePointIT combines expertise in cybersecurity, operational
+                efficiency, project execution, business intelligence, cloud
+                technology, and technology leadership.
+            </p>
+
+            <p>
+                Unlike traditional IT providers, our approach focuses on business
+                outcomes first: improving efficiency, reducing risk, strengthening
+                security, and ensuring technology investments support your
+                organizational goals.
+            </p>
+
+            <p>
+                Our assessments leverage decades of enterprise technology experience
+                and a network of experienced specialists to deliver practical,
+                understandable recommendations that business leaders can act on.
+            </p>
+
         </section>
 
+
         <div class="accent-bar"></div>
+
+
+        <!-- =====================================================
+             PROCESS
+             ===================================================== -->
 
         <section>
-            <h2>Our Simple Three-Step Process</h2>
-            <div class="industries-grid">
+
+            <h2>
+                Our Simple Three-Step Process
+            </h2>
+
+
+            <div class="industries-grid" style="grid-template-columns:repeat(3,1fr);">
+
+
                 <div class="oval-card">
-                    <h3>Step 1</h3>
-                    <p>15-Minute Executive Briefing to understand your goals, concerns, and operational challenges.</p>
+
+                    <h3>
+                        Step 1
+                    </h3>
+
+                    <p>
+                        A brief executive conversation to understand your goals,
+                        concerns, technology environment, and operational challenges.
+                    </p>
+
                 </div>
+
+
                 <div class="oval-card">
-                    <h3>Step 2</h3>
-                    <p>Non-Invasive Technology Review with zero disruption to employees or business operations.</p>
+
+                    <h3>
+                        Step 2
+                    </h3>
+
+                    <p>
+                        A non-invasive technology review designed to identify
+                        security risks, inefficiencies, and improvement opportunities
+                        without disrupting your employees.
+                    </p>
+
                 </div>
+
+
                 <div class="oval-card">
-                    <h3>Step 3</h3>
-                    <p>Receive your customized Operational Efficiency & Security Blueprint identifying opportunities,
-                        risks, and recommendations.</p>
+
+                    <h3>
+                        Step 3
+                    </h3>
+
+                    <p>
+                        Receive a customized Operational Efficiency &amp; Security
+                        Blueprint highlighting risks, priorities, and practical
+                        recommendations.
+                    </p>
+
                 </div>
+
             </div>
+
         </section>
+
 
         <div class="accent-bar"></div>
 
 
-        <section id="contact">
-            <h2>Request Your Complimentary Assessment</h2>
+        <!-- =====================================================
+             BOTTOM CTA
+             ===================================================== -->
 
-            <!-- Add this wrapping div around the HubSpot form tags -->
-            <div class="form-container-box">
-                <script src="https://js-na2.hsforms.net/forms/embed/246824202.js" defer></script>
-                <div class="hs-form-frame" data-region="na2" data-form-id="8fcd3f66-5e34-4ea9-9345-551552d79146"
-                    data-portal-id="246824202"></div>
+        <section style="
+                text-align:center;
+                background:#11254d;
+                border:2px solid var(--electric-blue);
+                border-radius:30px;
+                padding:3rem 1.5rem;
+                margin:3rem 0;
+            ">
+
+            <h2>
+                Ready to See Where Your Technology Can Improve?
+            </h2>
+
+            <p style="
+                    max-width:650px;
+                    margin:0.75rem auto 2rem auto;
+                    font-size:1.1rem;
+                    color:var(--text-muted);
+                ">
+
+                Request your complimentary assessment today and get a clearer
+                picture of your technology risks, costs, and opportunities.
+
+            </p>
+
+
+            <div style="
+                    display:flex;
+                    gap:1rem;
+                    justify-content:center;
+                    flex-wrap:wrap;
+                ">
+
+
+                <a href="#assessment-form" class="btn-primary" style="padding:1rem 2rem;font-size:1.05rem;">
+
+                    Request My Assessment
+
+                </a>
+
+
+                <a href="tel:8555746737" class="btn-secondary" style="padding:1rem 2rem;font-size:1.05rem;">
+
+                    Call 855-574-6737
+
+                </a>
+
+
             </div>
+
         </section>
+
+
     </main>
 
+
+    <!-- Footer -->
     <script src="includes/footer.js"></script>
+
+
+    <!-- Mobile Navigation -->
+    <script>
+
+        var menuToggle =
+            document.getElementById('menuToggle');
+
+        if (menuToggle) {
+
+            menuToggle.addEventListener(
+                'click',
+                function () {
+
+                    document
+                        .getElementById('mainNav')
+                        .classList
+                        .toggle('active');
+
+                }
+            );
+
+        }
+
+    </script>
+
+
 </body>
 
 </html>
+```
